@@ -4,7 +4,6 @@ import { THEME_TOGGLE } from "../../utils/actions";
 import { useStoreContext } from "../../utils/store-context";
 import Auth from "../../utils/auth";
 
-// import logo from '../../assets/images/logo.png';
 import darkToggle from '../../assets/images/dark-toggle.svg';
 
 import './style.scss';
@@ -15,7 +14,6 @@ export default function Nav() {
   return (
     <header className={`header-theme__${theme.dark ? 'dark' : 'light'}`}>
       <div>
-        {/* <img className="header-logo" src={logo} alt="Logo" /> */}
         <p className="title">CommunityHub</p>
       </div>
 
@@ -30,12 +28,21 @@ export default function Nav() {
           )}
         </nav>
 
-        <img
+        {/* <img
           onClick={() => dispatch({ type: THEME_TOGGLE })}
           className="header-theme-toggle"
           src={darkToggle}
           alt="Theme Toggle"
-        />
+        /> */}
+        <>
+                <Link className="btn btn-lg btn-info m-2" to="/login">
+                  Login
+                </Link>
+                <Link className="btn btn-lg btn-light m-2" to="/signup">
+                  Signup
+                </Link>
+              </>
+
       </div>
     </header>
   );
