@@ -21,7 +21,12 @@ const needSchema = new Schema({
     type: Date,
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
-  }
+  },
+  signedUpUsers: [
+    {
+      type: Schema.Types.ObjectId, ref: 'User'
+    }
+  ]
 });
 
 const Need = model('Need', needSchema)

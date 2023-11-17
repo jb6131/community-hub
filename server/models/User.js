@@ -25,6 +25,18 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
+  createdNeeds: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Need'
+    }
+  ],
+  signedUpNeeds: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Need'
+    }
+  ]
 });
 
 userSchema.pre('save', async function (next) {
