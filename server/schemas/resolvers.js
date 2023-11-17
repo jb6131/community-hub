@@ -55,6 +55,20 @@ const resolvers = {
         return need;
       } throw AuthenticationError;
     },
+    removeNeed: async (parent, { needId }, context) => {
+      if (context.user) {
+        const need = await Need.findByIdAndDelete({
+          _id: needId,
+          needAuthor: context.user._id,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user_id },
+          { $pull: { needs: need._id } }
+        );
+        return need;
+      } throw AuthenticationError;
+    },
   }
 };
 
