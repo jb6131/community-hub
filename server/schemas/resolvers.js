@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Need } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -9,6 +9,12 @@ const resolvers = {
       }
 
       return await User.findById(context.user._id);
+    },
+    need: async (parent, args, context) => {
+      if(!context.need) {
+        throw AuthenticationError;
+      }
+      return await Need.findById(context.need._id)
     }
   },
   Mutation: {
@@ -34,7 +40,21 @@ const resolvers = {
       const token = signToken(user);
 
       return { token };
-    }
+    },
+    addNeed: async (parent, { needText }, context) => {
+      if (context.need) {
+        const need = await Need.create({
+          needText,
+          needDate,
+          needAuthor: context.user._id,
+        });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { createdNeeds: need._id } }
+        );
+        return need;
+      } throw AuthenticationError;
+    },
   }
 };
 
