@@ -38,7 +38,8 @@ function App() {
       <StoreProvider>
         <div id="app-shell">
           <Nav />
-          {Auth.loggedIn() ? <Outlet /> : <Login />}
+          {/* {Auth.loggedIn() ? <Outlet /> : <Login />} */}
+          <Outlet />
         </div>
       </StoreProvider>
     </ApolloProvider>
