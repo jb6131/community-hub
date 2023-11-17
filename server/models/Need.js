@@ -10,9 +10,7 @@ const needSchema = new Schema({
     trim: true,
   },
   needAuthor: {
-    type: String,
-    required: true,
-    trim: true,
+    type: Schema.Types.ObjectId, ref: 'User'
   },
   needDate: { 
     type: Date,
@@ -21,7 +19,12 @@ const needSchema = new Schema({
     type: Date,
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
-  }
+  },
+  signedUpUsers: [
+    {
+      type: Schema.Types.ObjectId, ref: 'User'
+    }
+  ]
 });
 
 const Need = model('Need', needSchema)
