@@ -10,9 +10,7 @@ const needSchema = new Schema({
     trim: true,
   },
   needAuthor: {
-    type: String,
-    required: true,
-    trim: true,
+    type: Schema.Types.ObjectId, ref: 'User'
   },
   needDate: { 
     type: Date,
