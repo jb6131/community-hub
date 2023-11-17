@@ -1,0 +1,27 @@
+[
+    {
+        "needText": "Clean up Grant Park",
+        "needAuthor": "Emily Doe",
+        "needDate": "12/01/2023"
+    },
+    {
+        "needText": "Community car wash fundraiser",
+        "needAuthor": "Shane Smith",
+        "needDate": "12/05/2023"
+    },
+    {
+        "needText": "Christmas Dinner at the Shelter",
+        "needAuthor": "Joe Buck",
+        "needDate": "12/20/2023"
+    },
+    {
+        "needText": "Fun at the Food Bank!",
+        "needAuthor": "Susan Miner",
+        "needDate": "12/15/2023"
+    },
+    {
+        "needText": "Community co-op garden wrap-up",
+        "needAuthor": "Mitch Cola",
+        "needDate": "12/05/2023"
+    }
+]
