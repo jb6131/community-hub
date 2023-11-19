@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { SIGNIN_MUTATION } from '../utils/mutations';
+import { SIGNUP_MUTATION } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
@@ -13,7 +13,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
-  const [addUser, { error, data }] = useMutation(SIGNIN_MUTATION);
+  const [addUser, { error, data }] = useMutation(SIGNUP_MUTATION);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,11 +33,8 @@ const Signup = () => {
         variables: { ...formState },
       });
 
-      if (data.addUser.token) {
-        Auth.login(data.addUser.token);
-      } else {
-        throw new Error('Invalid response from server');
-      }  
+
+      Auth.login(data.signup.token);
     } catch (e) {
       console.error(e);
     }

@@ -8,14 +8,14 @@ export const LOGIN_MUTATION = gql`
   }
 `;
 
-export const SIGNIN_MUTATION = gql`
-  mutation signin(
+export const SIGNUP_MUTATION = gql`
+  mutation signup(
     $firstName: String!
     $lastName: String!
     $email: String!
     $password: String!
   ) {
-    signin(
+    signup(
       firstName: $firstName
       lastName: $lastName
       email: $email
