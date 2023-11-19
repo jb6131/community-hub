@@ -2,17 +2,20 @@ header {
     margin: 0 0 2rem;
     padding: 2rem 10%;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-around;
     align-items: center;
     box-shadow: 0 0 3px 1px rgba(150, 150, 150, 0.8);
+    background-color: green;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQ127Jcb_5PYbQkwAevptClf9aVP7KZwH-Q&usqp=CAU");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+
 
     .header-logo {
         width: 46px;
     }
 
-    &.header-theme__light {
-        background-color: green;
-    }
 
     &.header-theme__dark {
         background-color: #333;
@@ -85,13 +88,14 @@ header {
     
     .title {
         font-size: 3rem;
-        color: white;
-    }
+        color: rgb(248, 252, 249);
+        display: flex;
+        }
 
     .btn {
-        background-color: white;
+        background-color: rgb(202, 198, 198);
         margin: 1rem;
-        font-size: 2rem;
+        font-size: 1.25em;
         padding: 1rem;
         border-radius: 1rem;
     }

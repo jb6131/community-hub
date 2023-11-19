@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 
-import { THEME_TOGGLE } from "../../utils/actions";
 import { useStoreContext } from "../../utils/store-context";
 import Auth from "../../utils/auth";
-
-import darkToggle from '../../assets/images/dark-toggle.svg';
 
 import './style.scss';
 
@@ -12,9 +9,11 @@ export default function Nav() {
   const [theme, dispatch] = useStoreContext('theme');
 
   return (
-    <header className={`header-theme__${theme.dark ? 'dark' : 'light'}`}>
+    <header>
       <div>
+        <container className ="titleSection">
         <p className="title">CommunityHub</p>
+        </container>
       </div>
 
       <div>
@@ -27,13 +26,6 @@ export default function Nav() {
             </>
           )}
         </nav>
-
-        {/* <img
-          onClick={() => dispatch({ type: THEME_TOGGLE })}
-          className="header-theme-toggle"
-          src={darkToggle}
-          alt="Theme Toggle"
-        /> */}
         <>
                 <Link className="btn btn-lg btn-info m-2" to="/login">
                   Login
