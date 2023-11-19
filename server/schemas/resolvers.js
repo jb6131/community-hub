@@ -15,7 +15,10 @@ const resolvers = {
         throw AuthenticationError;
       }
       return await Need.findById(context.need._id)
-    }
+    },
+    allNeeds: async () => {
+      return User.find().populate('createdNeeds');
+    },
   },
   Mutation: {
     signup: async (parent, args) => {
