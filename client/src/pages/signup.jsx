@@ -33,6 +33,7 @@ const Signup = () => {
         variables: { ...formState },
       });
 
+
       Auth.login(data.signup.token);
     } catch (e) {
       console.error(e);
@@ -57,7 +58,7 @@ const Signup = () => {
                   placeholder="Your first name"
                   name="firstName"
                   type="text"
-                  value={formState.name}
+                  value={formState.firstName}
                   onChange={handleChange}
                 />
                 <input
@@ -65,7 +66,7 @@ const Signup = () => {
                   placeholder="Your last name"
                   name="lastName"
                   type="text"
-                  value={formState.name}
+                  value={formState.lastName}
                   onChange={handleChange}
                 />
                 <input
