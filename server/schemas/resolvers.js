@@ -72,7 +72,24 @@ const resolvers = {
         return need;
       } throw AuthenticationError;
     },
-  }
+    signUpForNeed: async (parent, { needId }, context) => {
+      if (context.user) {
+        return Need.findOneAndUpdate(
+          { _id: needId },
+          {
+            $addToSet: {
+              signedUpUsers: context.user.firstName,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw AuthenticationError;
+    },
+  },
 };
 
 module.exports = resolvers;
