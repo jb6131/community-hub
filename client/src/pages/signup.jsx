@@ -33,7 +33,11 @@ const Signup = () => {
         variables: { ...formState },
       });
 
-      Auth.login(data.addUser.token);
+      if (data.addUser.token) {
+        Auth.login(data.addUser.token);
+      } else {
+        throw new Error('Invalid response from server');
+      }  
     } catch (e) {
       console.error(e);
     }
@@ -57,7 +61,7 @@ const Signup = () => {
                   placeholder="Your first name"
                   name="firstName"
                   type="text"
-                  value={formState.name}
+                  value={formState.firstName}
                   onChange={handleChange}
                 />
                 <input
@@ -65,7 +69,7 @@ const Signup = () => {
                   placeholder="Your last name"
                   name="lastName"
                   type="text"
-                  value={formState.name}
+                  value={formState.lastName}
                   onChange={handleChange}
                 />
                 <input
