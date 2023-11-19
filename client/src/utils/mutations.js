@@ -25,3 +25,15 @@ export const SIGNIN_MUTATION = gql`
     }
   }
 `;
+
+export const ADD_NEED = gql`
+  mutation addNeed($needText: String!) {
+    addNeed(needText: $needText) {
+      _id
+      needText
+      needAuthor
+      needDate
+      createdAt
+    }
+  }
+`;
