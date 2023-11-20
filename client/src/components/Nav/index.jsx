@@ -3,17 +3,16 @@ import { Link } from "react-router-dom";
 import { useStoreContext } from "../../utils/store-context";
 import Auth from "../../utils/auth";
 
+import { StyledNav } from "../../styles/Nav.styled";
 import './style.scss';
 
 export default function Nav() {
   const [theme, dispatch] = useStoreContext('theme');
 
   return (
-    <header>
+    <StyledNav>
       <div>
-        <container className ="titleSection">
-        <p className="title">CommunityHub</p>
-        </container>
+          <p className="title">CommunityHub</p>
       </div>
 
       <div>
@@ -26,16 +25,18 @@ export default function Nav() {
             </>
           )}
         </nav>
-        <>
-                <Link className="btn btn-lg btn-info m-2" to="/login">
-                  Login
-                </Link>
-                <Link className="btn btn-lg btn-light m-2" to="/signup">
-                  Signup
-                </Link>
-              </>
+        
+          <section>
+            <Link className="btn btn-lg btn-info m-2" to="/login">
+              Login
+            </Link>
+            <Link className="btn btn-lg btn-light m-2" to="/signup">
+              Signup
+            </Link>
+          </ section>
+        
 
       </div>
-    </header>
+    </StyledNav>
   );
 }
