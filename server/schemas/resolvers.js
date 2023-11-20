@@ -44,8 +44,8 @@ const resolvers = {
 
       return { token };
     },
-    addNeed: async (parent, { needText }, context) => {
-      if (context.need) {
+    addNeed: async (parent, { needText, needDate }, context) => {
+      if (context.user) {
         const need = await Need.create({
           needText,
           needDate,
@@ -67,7 +67,7 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user_id },
-          { $pull: { needs: need._id } }
+          { $pull: { createdNeeds: needId } }
         );
         return need;
       } throw AuthenticationError;
@@ -78,7 +78,7 @@ const resolvers = {
           { _id: needId },
           {
             $addToSet: {
-              signedUpUsers: context.user.firstName,
+              signedUpUsers: context.user._id,
             },
           },
           {

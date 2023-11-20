@@ -27,13 +27,58 @@ export const SIGNUP_MUTATION = gql`
 `;
 
 export const ADD_NEED = gql`
-  mutation addNeed($needText: String!) {
-    addNeed(needText: $needText) {
+  mutation addNeed($needText: String!, $needDate: String) {
+    addNeed(needText: $needText, needDate: $needDate) {
       _id
       needText
-      needAuthor
+      needAuthor {
+        _id
+        firstName
+        lastName
+        email
+      }
       needDate
       createdAt
+    }
+  }
+`;
+
+export const REMOVE_NEED = gql`
+  mutation removeNeed($needId: ID!) {
+    removeNeed(needId: $needId) {
+      _id
+      needText
+      needAuthor {
+        _id
+        firstName
+        lastName
+        email
+      }
+      needDate
+      createdAt
+    }
+  }
+`;
+
+export const SIGN_UP_FOR_NEED = gql`
+  mutation signUpForNeed($needId: ID!) {
+    signUpForNeed(needId: $needId) {
+      _id
+      needText
+      needAuthor {
+        _id
+        firstName
+        lastName
+        email
+      }
+      needDate
+      createdAt
+      signedUpUsers {
+        _id
+        firstName
+        lastName
+        email
+      }
     }
   }
 `;
