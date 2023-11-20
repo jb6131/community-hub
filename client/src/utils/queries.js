@@ -47,7 +47,7 @@ export const QUERY_SINGLE_NEED = gql`
       }
       needDate
       createdAt
-      signedUpUsers {
+      signUpForNeed {
         _id
         firstName
         lastName

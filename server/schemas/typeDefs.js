@@ -17,6 +17,13 @@ const typeDefs = `
     signedUpUsers: [User]
   }
 
+  type signUpForNeed {
+    _id: ID
+    signUpForNeedText: String
+    signUpForNeedAuthoer: String
+    createdAt: String
+  }
+
   type Auth {
     token: ID
   }
@@ -31,8 +38,9 @@ const typeDefs = `
     signup(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addNeed(needText: String!, needDate: String): User
+    addSignUpForNeed(needId: ID!, signUpForNeedText: String!): Need
     removeNeed(_id: ID!): User
-    signUpForNeed(needId: ID!): Need
+    removeSignUpForNeed(needId: ID!, signForNeedId: ID!): Need
   }
 `;
 

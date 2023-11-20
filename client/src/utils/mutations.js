@@ -43,6 +43,7 @@ export const ADD_NEED = gql`
   }
 `;
 
+
 export const REMOVE_NEED = gql`
   mutation removeNeed($needId: ID!) {
     removeNeed(needId: $needId) {
@@ -82,3 +83,4 @@ export const SIGN_UP_FOR_NEED = gql`
     }
   }
 `;
+
