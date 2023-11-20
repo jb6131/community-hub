@@ -2,37 +2,29 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_NEED } from '../../utils/mutations';
-import { QUERY_NEEDS, QUERY_ME } from '../../utils/queries';
+import { ADD_SIGNUPFORNEED } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const NeedForm = () => {
-  const [needText, setNeedText] = useState('');
-
+const SignUpForNeedForm = ({ needId }) => {
+  const [signUpForNeedText, setSignUpForNeedText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addNeed, { error }] = useMutation
-  (ADD_NEED, {
-    refetchQueries: [
-      QUERY_NEEDS,
-      'getNeeds',
-      QUERY_ME,
-      'me'
-    ]
-  });
+  const [addSignUpForNeed, { error }] = useMutation(ADD_SIGNUPFORNEED);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const { data } = await addNeed({
+      const { data } = await addSignUpForNeed({
         variables: {
-          needText,
-          needAuthor: Auth.getProfile().firstName
+          needId,
+          signUpForNeedTextText,
+          signUpForNeedAuthor: Auth.getProfile().firstName
         },
       });
 
-      setNeedText('');
+      setSignUpForNeedText('');
     } catch (err) {
       console.error(err);
     }
@@ -41,15 +33,15 @@ const NeedForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'needText' && value.length <= 280) {
-      setNeedText(value);
+    if (name === 'signUpForNeedText' && value.length <= 280) {
+      setSignUpForNeedText(value);
       setCharacterCount(value.length);
     }
   };
 
   return (
     <div>
-      <h3>What kind of community project do you need support for?</h3>
+      <h4>Sign up to volunteer for this project!</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -59,6 +51,7 @@ const NeedForm = () => {
             }`}
           >
             Character Count: {characterCount}/280
+            {error && <span className="ml-2">{error.message}</span>}
           </p>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
@@ -66,9 +59,9 @@ const NeedForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="needText"
-                placeholder="Here's a new community project..."
-                value={needText}
+                name="signUpForNeedText"
+                placeholder="Add your name..."
+                value={signUpForNeedText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -77,19 +70,14 @@ const NeedForm = () => {
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Need
+                Submit
               </button>
             </div>
-            {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
-                {error.message}
-              </div>
-            )}
           </form>
         </>
       ) : (
         <p>
-          You need to be logged in to share your community project. Please{' '}
+          You need to be logged in to sign up. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
@@ -97,4 +85,4 @@ const NeedForm = () => {
   );
 };
 
-export default NeedForm;
+export default SignUpForNeedForm;

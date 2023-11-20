@@ -37,3 +37,19 @@ export const ADD_NEED = gql`
     }
   }
 `;
+
+export const ADD_SIGNUPFORNEED = gql`
+  mutation addSignUpForNeed($thoughtId: ID!, $signUpForNeedText: String!) {
+    addSignUpForNeed(thoughtId: $thoughtId, signUpForNeedText: $signUpForNeedText) {
+      _id
+      needText
+      needAuthor
+      createdAt
+      signUpForNeed {
+        _id
+        signUpForNeedText
+        createdAt
+      }
+    }
+  }
+`
