@@ -15,7 +15,10 @@ const resolvers = {
         throw AuthenticationError;
       }
       return await Need.findById(context.need._id)
-    }
+    },
+    allNeeds: async () => {
+      return User.find().populate('createdNeeds');
+    },
   },
   Mutation: {
     signup: async (parent, args) => {
@@ -41,8 +44,8 @@ const resolvers = {
 
       return { token };
     },
-    addNeed: async (parent, { needText }, context) => {
-      if (context.need) {
+    addNeed: async (parent, { needText, needDate }, context) => {
+      if (context.user) {
         const need = await Need.create({
           needText,
           needDate,
@@ -64,12 +67,29 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user_id },
-          { $pull: { needs: need._id } }
+          { $pull: { createdNeeds: needId } }
         );
         return need;
       } throw AuthenticationError;
     },
-  }
+    signUpForNeed: async (parent, { needId }, context) => {
+      if (context.user) {
+        return Need.findOneAndUpdate(
+          { _id: needId },
+          {
+            $addToSet: {
+              signedUpUsers: context.user._id,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw AuthenticationError;
+    },
+  },
 };
 
 module.exports = resolvers;
