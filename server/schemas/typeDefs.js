@@ -1,5 +1,3 @@
-// changed needAuthor from String to User, resolver will get the authenticated user via context
-
 const typeDefs = `
   type User {
     _id: ID
