@@ -17,30 +17,22 @@ const typeDefs = `
     signedUpUsers: [User]
   }
 
-  type signUpForNeed {
-    _id: ID
-    signUpForNeedText: String
-    signUpForNeedAuthoer: String
-    createdAt: String
-  }
-
   type Auth {
     token: ID
   }
 
   type Query {
     user: User
-    need: Need
+    need(needId: ID!): Need
     allNeeds: [Need]
   }
 
   type Mutation {
     signup(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addNeed(needText: String!, needDate: String): User
-    addSignUpForNeed(needId: ID!, signUpForNeedText: String!): Need
-    removeNeed(_id: ID!): User
-    removeSignUpForNeed(needId: ID!, signForNeedId: ID!): Need
+    addNeed(needText: String!, needDate: String): Need
+    removeNeed(needId: ID!): Need
+    signUpForNeed(needId: ID!): Need
   }
 `;
 

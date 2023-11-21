@@ -10,14 +10,15 @@ const resolvers = {
 
       return await User.findById(context.user._id);
     },
-    need: async (parent, args, context) => {
-      if(!context.need) {
+    need: async (parent, { needId }, context) => {
+      if(!context.user) {
         throw AuthenticationError;
       }
-      return await Need.findById(context.need._id)
+      return await Need.findById(needId).populate('needAuthor');
     },
+    // gets all needs (for homepage to show list of all available needs)
     allNeeds: async () => {
-      return User.find().populate('createdNeeds');
+      return await Need.find();
     },
   },
   Mutation: {
@@ -51,6 +52,7 @@ const resolvers = {
           needDate,
           needAuthor: context.user._id,
         });
+        await need.populate('needAuthor');
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { createdNeeds: need._id } }
@@ -60,32 +62,40 @@ const resolvers = {
     },
     removeNeed: async (parent, { needId }, context) => {
       if (context.user) {
-        const need = await Need.findByIdAndDelete({
+        const need = await Need.findOne({
           _id: needId,
           needAuthor: context.user._id,
         });
 
-        await User.findOneAndUpdate(
-          { _id: context.user_id },
-          { $pull: { createdNeeds: needId } }
-        );
+        if (need) {
+          await Need.findByIdAndDelete(needId);
+
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { createdNeeds: needId } }
+          );
+        }
         return need;
       } throw AuthenticationError;
     },
     signUpForNeed: async (parent, { needId }, context) => {
       if (context.user) {
-        return Need.findOneAndUpdate(
+        const updatedNeed = await Need.findOneAndUpdate(
           { _id: needId },
-          {
-            $addToSet: {
-              signedUpUsers: context.user._id,
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
+          { $addToSet: { signedUpUsers: context.user._id } },
+          { new: true, runValidators: true }
         );
+
+        if (!updatedNeed) {
+          throw new Error('Need not found!');
+        }
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { signedUpNeeds: needId } }
+        );
+
+        return updatedNeed;
       }
       throw AuthenticationError;
     },
