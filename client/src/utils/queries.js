@@ -81,28 +81,6 @@ export const QUERY_ME = gql`
       firstName
       lastName
       email
-      createdNeeds {
-        _id
-        needText
-        needAuthor {
-          _id
-          firstName
-          lastName
-        }
-        needDate
-        createdAt
-      }
-      signedUpNeeds {
-        _id
-        needText
-        needAuthor {
-          _id
-          firstName
-          lastName
-        }
-        needDate
-        createdAt
-      }
     }
   }
 `;

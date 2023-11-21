@@ -27,8 +27,8 @@ export const SIGNUP_MUTATION = gql`
 `;
 
 export const ADD_NEED = gql`
-  mutation addNeed($needText: String!, $needDate: String) {
-    addNeed(needText: $needText, needDate: $needDate) {
+  mutation addNeed($needText: String!, $needDate: String, $needAuthor: userInput!) {
+    addNeed(needText: $needText, needDate: $needDate, needAuthor: $needAuthor) {
       _id
       needText
       needAuthor {

@@ -19,6 +19,11 @@ const resolvers = {
     allNeeds: async () => {
       return User.find().populate('createdNeeds');
     },
+    me: async (parent, args, context) => {
+      if(context.user) {
+        return User.findOne({_id: context.user._id }).populate()
+      }
+    }
   },
   Mutation: {
     signup: async (parent, args) => {
@@ -45,18 +50,19 @@ const resolvers = {
       return { token };
     },
     addNeed: async (parent, { needText, needDate }, context) => {
-      if (context.user) {
-        const need = await Need.create({
-          needText,
-          needDate,
-          needAuthor: context.user._id,
-        });
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { createdNeeds: need._id } }
-        );
-        return need;
-      } throw AuthenticationError;
+      console.log(context.user._id)
+      // if (context.user) {
+      //   const need = await Need.create({
+      //     needText,
+      //     needDate,
+      //     needAuthor: context.user._id,
+      //   });
+      //   await User.findOneAndUpdate(
+      //     { _id: context.user._id },
+      //     { $addToSet: { createdNeeds: need._id } }
+      //   );
+      //   return need;
+      // } throw AuthenticationError;
     },
     removeNeed: async (parent, { needId }, context) => {
       if (context.user) {
@@ -72,23 +78,23 @@ const resolvers = {
         return need;
       } throw AuthenticationError;
     },
-    signUpForNeed: async (parent, { needId }, context) => {
-      if (context.user) {
-        return Need.findOneAndUpdate(
-          { _id: needId },
-          {
-            $addToSet: {
-              signedUpUsers: context.user._id,
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw AuthenticationError;
-    },
+    // signUpForNeed: async (parent, { needId }, context) => {
+    //   if (context.user) {
+    //     return Need.findOneAndUpdate(
+    //       { _id: needId },
+    //       {
+    //         $addToSet: {
+    //           signedUpUsers: context.user._id,
+    //         },
+    //       },
+    //       {
+    //         new: true,
+    //         runValidators: true,
+    //       }
+    //     );
+    //   }
+    //   throw AuthenticationError;
+    // },
   },
 };
 

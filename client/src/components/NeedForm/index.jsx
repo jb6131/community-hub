@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
 import { ADD_NEED } from '../../utils/mutations';
 import { QUERY_NEEDS, QUERY_ME } from '../../utils/queries';
@@ -22,13 +22,16 @@ const NeedForm = () => {
     ]
   });
 
+  const { loading, userData } = useQuery(QUERY_ME)  
+  
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(userData)
     try {
       const { data } = await addNeed({
         variables: {
           needText,
-          needAuthor: Auth.getProfile().firstName
+          needAuthor: userData
         },
       });
 
