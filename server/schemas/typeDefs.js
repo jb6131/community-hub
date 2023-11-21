@@ -17,20 +17,13 @@ const typeDefs = `
     signedUpUsers: [User]
   }
 
-  type signUpForNeed {
-    _id: ID
-    signUpForNeedText: String
-    signUpForNeedAuthoer: String
-    createdAt: String
-  }
-
   type Auth {
     token: ID
   }
 
   type Query {
     user: User
-    need: Need
+    need(needId: ID!): Need
     allNeeds: [Need]
     me: User
   }
