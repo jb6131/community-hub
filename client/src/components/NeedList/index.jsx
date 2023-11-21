@@ -13,7 +13,7 @@ const NeedList = ({
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
-      {thoughts &&
+      {needs &&
         needs.map((need) => (
           <div key={need._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
