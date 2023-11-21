@@ -8,9 +8,11 @@ import {
 } from '@apollo/client';
 
 import { StoreProvider } from './utils/store-context';
+import { UserProvider } from './utils/user-context';
 import Nav from './components/Nav';
 import Login from './components/Login';
-import Auth from './utils/auth'
+import Auth from './utils/auth';
+import Footer from './components/Footer';
 
 import './app.scss';
 
@@ -35,13 +37,18 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <StoreProvider>
-        <div id="app-shell">
-          <Nav />
-          {/* {Auth.loggedIn() ? <Outlet /> : <Login />} */}
-          <Outlet />
-        </div>
-      </StoreProvider>
+        <UserProvider>
+          <StoreProvider>
+            <div id="app-shell">
+              <Nav />
+              {/* {Auth.loggedIn() ? <Outlet /> : <Login />} */}
+              <Outlet />
+            </div>
+            <div>
+              <Footer />
+            </div>
+        </StoreProvider>
+      </UserProvider>
     </ApolloProvider>
   )
 }
