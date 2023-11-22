@@ -11,6 +11,15 @@ const typeDefs = `
   type Need {
     _id: ID!
     needText: String!
+    needAuthor: ID!
+    needDate: String
+    createdAt: String
+    signedUpUsers: [User]
+  }
+
+  type NeedReturn {
+    _id: ID!
+    needText: String!
     needAuthor: User!
     needDate: String
     createdAt: String
@@ -31,14 +40,14 @@ const typeDefs = `
   type Query {
     user: User
     need: Need
-    allNeeds: [Need]
+    allNeeds: [NeedReturn]
     me: User
   }
 
   input needInput {
     _id: String!
     needText: String!
-    needAuthor: userInput!
+    needAuthor: ID!
     needDate: String
     createdAt: String
     signedUpUsers: [userInput]
@@ -56,7 +65,7 @@ const typeDefs = `
   type Mutation {
     signup(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addNeed(needText: String!, needDate: String, needAuthor: userInput!): Need
+    addNeed(needText: String!, needDate: String): Need
     addSignUpForNeed(needId: ID!, signUpForNeedText: String!): Need
     removeNeed(_id: ID!): User
     removeSignUpForNeed(needId: ID!, signForNeedId: ID!): Need

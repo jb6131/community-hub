@@ -17,7 +17,7 @@ const resolvers = {
       return await Need.findById(context.need._id)
     },
     allNeeds: async () => {
-      return User.find().populate('createdNeeds');
+      return await Need.find({}).populate('needAuthor');
     },
     me: async (parent, args, context) => {
       if(context.user) {
@@ -50,19 +50,19 @@ const resolvers = {
       return { token };
     },
     addNeed: async (parent, { needText, needDate }, context) => {
-      console.log(context.user._id)
-      // if (context.user) {
-      //   const need = await Need.create({
-      //     needText,
-      //     needDate,
-      //     needAuthor: context.user._id,
-      //   });
-      //   await User.findOneAndUpdate(
-      //     { _id: context.user._id },
-      //     { $addToSet: { createdNeeds: need._id } }
-      //   );
-      //   return need;
-      // } throw AuthenticationError;
+      if (context.user) {
+        const need = await Need.create({
+          needText,
+          needDate,
+          needAuthor: context.user._id,
+        });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { createdNeeds: need._id } }
+        );
+        console.log(need)
+        return need;
+      } throw AuthenticationError;
     },
     removeNeed: async (parent, { needId }, context) => {
       if (context.user) {

@@ -9,8 +9,7 @@ import { QUERY_NEEDS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const NeedForm = () => {
-  const { user } = UseUserContext();
-  console.log(Auth.getProfile().data)
+  const { user } = UseUserContext()
   const [needText, setNeedText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
@@ -29,7 +28,6 @@ const NeedForm = () => {
       const { data } = await addNeed({
         variables: {
           needText,
-          needAuthor: user
         },
       });
 

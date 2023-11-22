@@ -11,22 +11,14 @@ export const QUERY_USER = gql`
       createdNeeds {
         _id
         needText
-        needAuthor {
-          _id
-          firstName
-          lastName
-        }
+        needAuthor 
         needDate
         createdAt
       }
       signedUpNeeds {
         _id
         needText
-        needAuthor {
-          _id
-          firstName
-          lastName
-        }
+        needAuthor 
         needDate
         createdAt
       }
@@ -40,11 +32,7 @@ export const QUERY_SINGLE_NEED = gql`
     need(_id: $id) {
       _id
       needText
-      needAuthor {
-        _id
-        firstName
-        lastName
-      }
+      needAuthor 
       needDate
       createdAt
       signUpForNeed {
@@ -66,6 +54,7 @@ export const QUERY_NEEDS = gql`
         _id
         firstName
         lastName
+        email
       }
       needDate
       createdAt
