@@ -26,13 +26,6 @@ const typeDefs = `
     signedUpUsers: [User]
   }
 
-  type signUpForNeed {
-    _id: ID
-    signUpForNeedText: String
-    signUpForNeedAuthoer: String
-    createdAt: String
-  }
-
   type Auth {
     token: ID
   }
