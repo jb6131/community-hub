@@ -10,11 +10,20 @@ const resolvers = {
 
       return await User.findById(context.user._id);
     },
-    need: async (parent, { needId }, context) => {
+    singleNeed: async (parent, { needId }, context) => {
       if(!context.user) {
         throw AuthenticationError;
       }
-      return await Need.findById(needId).populate('needAuthor');
+      
+      const need = await Need.findById(needId)
+        .populate('needAuthor')
+        .populate('signedUpUsers');
+
+      if (!need) {
+        throw new Error ('Need not found');
+      }
+
+      return need;
     },
     // gets all needs (for homepage to show list of all available needs)
     allNeeds: async () => {
@@ -57,6 +66,7 @@ const resolvers = {
           needDate,
           needAuthor: context.user._id,
         });
+        await need.populate('needAuthor');
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { createdNeeds: need._id } }
@@ -101,7 +111,11 @@ const resolvers = {
           { $addToSet: { signedUpNeeds: needId } }
         );
 
-        return updatedNeed;
+        const populatedNeed = await Need.findById(updatedNeed._id)
+          .populate('needAuthor')
+          .populate('signedUpUsers');
+
+        return populatedNeed;
       }
       throw AuthenticationError;
     },
