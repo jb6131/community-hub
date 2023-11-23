@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
+import { UseUserContext } from '../../utils/user-context';
 
 import { ADD_NEED } from '../../utils/mutations';
 import { QUERY_NEEDS, QUERY_ME } from '../../utils/queries';
@@ -8,6 +9,7 @@ import { QUERY_NEEDS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const NeedForm = () => {
+  const { user } = UseUserContext()
   const [needText, setNeedText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
@@ -17,18 +19,15 @@ const NeedForm = () => {
     refetchQueries: [
       QUERY_NEEDS,
       'getNeeds',
-      QUERY_ME,
-      'me'
     ]
   });
-
+  
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await addNeed({
         variables: {
           needText,
-          needAuthor: Auth.getProfile().firstName
         },
       });
 

@@ -18,8 +18,13 @@ const resolvers = {
     },
     // gets all needs (for homepage to show list of all available needs)
     allNeeds: async () => {
-      return await Need.find();
+      return await Need.find({}).populate('needAuthor');
     },
+    me: async (parent, args, context) => {
+      if(context.user) {
+        return User.findOne({_id: context.user._id }).populate()
+      }
+    }
   },
   Mutation: {
     signup: async (parent, args) => {
@@ -52,11 +57,11 @@ const resolvers = {
           needDate,
           needAuthor: context.user._id,
         });
-        await need.populate('needAuthor');
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { createdNeeds: need._id } }
         );
+        console.log(need)
         return need;
       } throw AuthenticationError;
     },
@@ -78,6 +83,7 @@ const resolvers = {
         return need;
       } throw AuthenticationError;
     },
+
     signUpForNeed: async (parent, { needId }, context) => {
       if (context.user) {
         const updatedNeed = await Need.findOneAndUpdate(
@@ -99,6 +105,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+
   },
 };
 

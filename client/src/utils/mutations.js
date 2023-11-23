@@ -31,12 +31,7 @@ export const ADD_NEED = gql`
     addNeed(needText: $needText, needDate: $needDate) {
       _id
       needText
-      needAuthor {
-        _id
-        firstName
-        lastName
-        email
-      }
+      needAuthor
       needDate
       createdAt
     }
@@ -49,12 +44,7 @@ export const REMOVE_NEED = gql`
     removeNeed(needId: $needId) {
       _id
       needText
-      needAuthor {
-        _id
-        firstName
-        lastName
-        email
-      }
+      needAuthor 
       needDate
       createdAt
     }
@@ -66,12 +56,7 @@ export const SIGN_UP_FOR_NEED = gql`
     signUpForNeed(needId: $needId) {
       _id
       needText
-      needAuthor {
-        _id
-        firstName
-        lastName
-        email
-      }
+      needAuthor 
       needDate
       createdAt
       signedUpUsers {
