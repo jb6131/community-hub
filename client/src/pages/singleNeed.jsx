@@ -8,10 +8,10 @@ import SignUpForNeedForm from '../components/SignUpForm';
 import { QUERY_SINGLE_NEED } from '../utils/queries';
 
 const SingleNeed = () => {
-  const { needtId } = useParams();
+  const { needId } = useParams();
 
   const { loading, data } = useQuery(QUERY_SINGLE_NEED, {
-    variables: { needtId: needtId },
+    variables: { needId: needId },
   });
 
   const need = data?.need || {};

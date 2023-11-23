@@ -59,7 +59,7 @@ const typeDefs = `
     signup(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addNeed(needText: String!, needDate: String): Need
-    addSignUpForNeed(needId: ID!, signUpForNeedText: String!): Need
+    signUpForNeed(needId: ID!, signUpForNeedText: String!): Need
     removeNeed(_id: ID!): User
     removeSignUpForNeed(needId: ID!, signForNeedId: ID!): Need
   }
