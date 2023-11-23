@@ -28,17 +28,23 @@ export const QUERY_USER = gql`
 
 // gets a single need
 export const QUERY_SINGLE_NEED = gql`
-  query getNeed($id: ID!) {
-    need(_id: $id) {
+  query getNeed($needId: ID!) {
+    singleNeed(needId: $needId) {
       _id
       needText
-      needAuthor 
-      needDate
-      createdAt
-      signUpForNeed {
+      needAuthor {
         _id
         firstName
         lastName
+        email
+      }
+      needDate
+      createdAt
+      signedUpUsers {
+        _id
+        firstName
+        lastName
+        email
       }
     }
   }

@@ -6,9 +6,10 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Login from './pages/login.jsx';
 import Signup from './pages/signup.jsx'
+import SingleNeed from './pages/singleNeed.jsx';
 import NotFound from './pages/NotFound.jsx';
 
-import './index.css'
+import './index.css';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
       {
        path: '/signup',
        element: <Signup /> 
-      }
+      },
+      {
+        path: '/needs/:needId',
+        element: <SingleNeed />
+      },
     ]
   }
 ]);
