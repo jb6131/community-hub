@@ -16,7 +16,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
                 <>
                   <Link
                     className="text-light"
-                    to={`/profiles/${need.needAuthor._id}`}
+                    to={`/profile/${need.needAuthor._id}`}
                   >
                     {need.needAuthor.firstName} {need.needAuthor.lastName}{" "}
                     <br />

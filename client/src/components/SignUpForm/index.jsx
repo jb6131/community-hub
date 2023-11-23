@@ -2,40 +2,25 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_SIGNUPFORNEED } from '../../utils/mutations';
+import { SIGN_UP_FOR_NEED } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
 const SignUpForNeedForm = ({ needId }) => {
-  const [signUpForNeedText, setSignUpForNeedText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addSignUpForNeed, { error }] = useMutation(ADD_SIGNUPFORNEED);
+  const [signUpForNeed, { error }] = useMutation(SIGN_UP_FOR_NEED);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addSignUpForNeed({
-        variables: {
-          needId,
-          signUpForNeedTextText,
-          signUpForNeedAuthor: Auth.getProfile().firstName
-        },
+      const { data } = await signUpForNeed({
+        variables: { needId },
       });
 
-      setSignUpForNeedText('');
     } catch (err) {
       console.error(err);
-    }
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    if (name === 'signUpForNeedText' && value.length <= 280) {
-      setSignUpForNeedText(value);
-      setCharacterCount(value.length);
     }
   };
 
