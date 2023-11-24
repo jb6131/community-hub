@@ -6,6 +6,7 @@ import { UseUserContext } from '../../utils/user-context';
 import { ADD_NEED } from '../../utils/mutations';
 import { QUERY_NEEDS, QUERY_ME } from '../../utils/queries';
 
+import './index.css';
 import Auth from '../../utils/auth';
 
 const NeedForm = () => {
