@@ -10,7 +10,7 @@ import { QUERY_NEEDS } from '../../utils/queries';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_NEEDS);
-  const needs = data?.needs || [];
+  const needs = data?.allNeeds || [];
 
   return (
     <main>

@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const NeedList = ({
-  needs,
-  title,
-  showTitle = true,
-  showFirstName = true,
-}) => {
+const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
   if (!needs.length) {
     return <h3>No Community Needs Yet</h3>;
   }
@@ -13,23 +8,26 @@ const NeedList = ({
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
-      {thoughts &&
+      {needs &&
         needs.map((need) => (
           <div key={need._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showFirstName ? (
-                <Link
-                  className="text-light"
-                  to={`/profiles/${need.needAuthor}`}
-                >
-                  {need.needAuthor} <br />
-                  <span style={{ fontSize: '1rem' }}>
+                <>
+                  <Link
+                    className="text-light"
+                    to={`/profile/${need.needAuthor._id}`}
+                  >
+                    {need.needAuthor.firstName} {need.needAuthor.lastName}{" "}
+                    <br />
+                  </Link>
+                  <span style={{ fontSize: "1rem" }}>
                     posted this community project on {need.createdAt}
                   </span>
-                </Link>
+                </>
               ) : (
                 <>
-                  <span style={{ fontSize: '1rem' }}>
+                  <span style={{ fontSize: "1rem" }}>
                     You posted this community project on {need.createdAt}
                   </span>
                 </>

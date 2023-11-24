@@ -1,20 +1,30 @@
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
 import SignUpForNeedList from '../components/SignUpList';
-import SignUpForNeedForm from '../components/SignUpForm';
 
 import { QUERY_SINGLE_NEED } from '../utils/queries';
+import { SIGN_UP_FOR_NEED } from '../utils/mutations';
 
 const SingleNeed = () => {
-  const { needtId } = useParams();
+  const { needId } = useParams();
+  const [signUpForNeed, { error }] = useMutation(SIGN_UP_FOR_NEED);
 
-  const { loading, data } = useQuery(QUERY_SINGLE_NEED, {
-    variables: { needtId: needtId },
+  const { loading, data, refetch } = useQuery(QUERY_SINGLE_NEED, {
+    variables: { needId: needId },
   });
 
-  const need = data?.need || {};
+  const need = data?.singleNeed || {};
+
+  const handleSignUp = async () => {
+    try {
+      await signUpForNeed({ variables: { needId } });
+      refetch();
+    } catch (error) {
+      console.error('Error signing up for need: ', error);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -22,7 +32,7 @@ const SingleNeed = () => {
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
-        {need.needAuthor} <br />
+        {need.needAuthor.firstName} {need.needAuthor.lastName} <br />
         <span style={{ fontSize: '1rem' }}>
           posted this need on {need.createdAt}
         </span>
@@ -41,11 +51,12 @@ const SingleNeed = () => {
         </blockquote>
       </div>
 
-      <div className="my-5">
-        <SignUpForNeedList comments={need.signUpForNeed} />
+      <div>
+          <button onClick={handleSignUp}>Sign Up</button>
       </div>
-      <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <SignUpForNeedForm needId={need._id} />
+
+      <div className="my-5">
+        <SignUpForNeedList signedUpUsers={need.signedUpUsers} />
       </div>
     </div>
   );

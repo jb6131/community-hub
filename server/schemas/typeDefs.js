@@ -1,6 +1,6 @@
 const typeDefs = `
   type User {
-    _id: ID
+    _id: ID!
     firstName: String!
     lastName: String!
     email: String!
@@ -9,7 +9,7 @@ const typeDefs = `
   }
 
   type Need {
-    _id: ID
+    _id: ID!
     needText: String!
     needAuthor: User!
     needDate: String
@@ -17,11 +17,13 @@ const typeDefs = `
     signedUpUsers: [User]
   }
 
-  type signUpForNeed {
-    _id: ID
-    signUpForNeedText: String
-    signUpForNeedAuthoer: String
+  type NeedReturn {
+    _id: ID!
+    needText: String!
+    needAuthor: User!
+    needDate: String
     createdAt: String
+    signedUpUsers: [User]
   }
 
   type Auth {
@@ -30,16 +32,35 @@ const typeDefs = `
 
   type Query {
     user: User
-    need: Need
-    allNeeds: [Need]
+    singleNeed(needId: ID!): Need
+    allNeeds: [NeedReturn]
+    me: User
+  }
+
+  input needInput {
+    _id: String!
+    needText: String!
+    needAuthor: ID!
+    needDate: String
+    createdAt: String
+    signedUpUsers: [userInput]
+  }
+
+  input userInput {
+    _id: String!
+    firstName: String!
+    lastName: String!
+    email: String!
+    createdNeeds: [needInput]
+    signedUpNeeds: [needInput]
   }
 
   type Mutation {
     signup(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addNeed(needText: String!, needDate: String): User
-    addSignUpForNeed(needId: ID!, signUpForNeedText: String!): Need
-    removeNeed(_id: ID!): User
+    addNeed(needText: String!, needDate: String): Need
+    signUpForNeed(needId: ID!): Need
+    removeNeed(needId: ID!): User
     removeSignUpForNeed(needId: ID!, signForNeedId: ID!): Need
   }
 `;

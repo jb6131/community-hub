@@ -49,12 +49,7 @@ export const REMOVE_NEED = gql`
     removeNeed(needId: $needId) {
       _id
       needText
-      needAuthor {
-        _id
-        firstName
-        lastName
-        email
-      }
+      needAuthor 
       needDate
       createdAt
     }
