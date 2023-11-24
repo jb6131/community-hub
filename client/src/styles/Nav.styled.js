@@ -18,13 +18,4 @@ p {
     color: white;
     display: flex;
     }
-
-section {
-    background-color: rgb(202, 198, 198);
-    margin: 2rem;
-    font-size: 1.25em;
-    padding: 1rem;
-    border-radius: 1rem;
-
-}
 `
