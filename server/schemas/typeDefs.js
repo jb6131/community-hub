@@ -10,8 +10,8 @@ const typeDefs = `
 
   type Need {
     _id: ID!
-    needText: String!
-    needAuthor: User!
+    needText: String
+    needAuthor: User
     needDate: String
     createdAt: String
     signedUpUsers: [User]
@@ -31,7 +31,7 @@ const typeDefs = `
   }
 
   type Query {
-    user: User
+    user(_id:ID): User
     singleNeed(needId: ID!): Need
     allNeeds: [NeedReturn]
     me: User

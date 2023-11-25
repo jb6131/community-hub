@@ -12,6 +12,7 @@ import Auth from '../../utils/auth';
 const NeedForm = () => {
   const { user } = UseUserContext()
   const [needText, setNeedText] = useState('');
+  const [needDate, setNeedDate] = useState('')
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -29,10 +30,12 @@ const NeedForm = () => {
       const { data } = await addNeed({
         variables: {
           needText,
+          needDate,
         },
       });
 
       setNeedText('');
+      setNeedDate('');
     } catch (err) {
       console.error(err);
     }
@@ -43,6 +46,10 @@ const NeedForm = () => {
 
     if (name === 'needText' && value.length <= 280) {
       setNeedText(value);
+      setCharacterCount(value.length);
+    };
+    if (name === 'needDate' && value.length <= 180) {
+      setNeedDate(value);
       setCharacterCount(value.length);
     }
   };
@@ -73,6 +80,17 @@ const NeedForm = () => {
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
+              <br/>
+              <label>Project date: </label>
+              <input
+                type="date"
+                name="needDate"
+                placeholder="Enter the project date"
+                value={needDate}
+                className="form-input w-100"
+                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                onChange={handleChange}
+              ></input>
             </div>
 
             <div className="col-12 col-lg-3">
@@ -90,7 +108,7 @@ const NeedForm = () => {
       ) : (
         <p>
           You need to be logged in to share your community project. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          <Link to="/login">login</Link>{' '} or {' '}<Link to="/signup">signup.</Link>
         </p>
       )}
     </div>

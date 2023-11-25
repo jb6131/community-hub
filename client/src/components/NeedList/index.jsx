@@ -35,6 +35,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
             </h4>
             <div className="card-body bg-light p-2">
               <p>{need.needText}</p>
+              <p>Project date: {need.needDate}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"

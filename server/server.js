@@ -1,6 +1,8 @@
 require('dotenv').config();
 
 const path = require('path');
+// const stripe = require('stripe')('sk_test_51OG4JxELqHvNcxjUDCNkcxUpeWpQOI04rweWGP0atKucDHNQRVkEKyFdVoZfrS1UiessTBKAOmAklQfHOU6vvBJo00hyIpjPiW');
+
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
