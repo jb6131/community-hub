@@ -5,6 +5,7 @@ import Auth from "../../utils/auth";
 
 import { StyledNav } from "../../styles/Nav.styled";
 
+
 export default function Nav() {
   const [theme, dispatch] = useStoreContext('theme');
 
@@ -24,7 +25,7 @@ export default function Nav() {
             </>
           )}
         </nav>
-              
+
 
       </div>
     </StyledNav>
