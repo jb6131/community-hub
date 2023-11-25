@@ -107,7 +107,8 @@ export default styled (NeedForm) `
 p {
     display: flex;
     justify-content: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
 }
 
 `

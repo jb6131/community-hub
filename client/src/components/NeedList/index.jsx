@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
   if (!needs.length) {
-    return <h3 style={{textAlign: "center"}}>No Community Needs Yet</h3>;
+    return <h3 style={{textAlign: "center", marginTop: "11rem", marginBottom: "11rem"}}>No Community Needs Yet</h3>;
   }
 
   return (
