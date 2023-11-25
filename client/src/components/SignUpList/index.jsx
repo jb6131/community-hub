@@ -43,8 +43,8 @@ const SignUpForNeedList = ({ needId, signedUpUsers = [] }) => {
                 <span style={{ fontSize: "0.825rem" }}>
                   {/* You can add more user details here */}
                 </span>
-                <p>{user._id}</p>
-                <p>{data.user._id}</p>
+                {/* <p>{user._id}</p> */}
+                {/* <p>{data.user._id}</p> */}
                 {user._id == data.user._id ? (
                   <button onClick={removeHandler}>Remove</button>
                 ) : null}
