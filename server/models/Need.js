@@ -14,6 +14,7 @@ const needSchema = new Schema({
   },
   needDate: { 
     type: Date,
+    get: (timestamp) => dateFormat(timestamp),
   },
   createdAt: {
     type: Date,

@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 // gets a user by ID
 export const QUERY_USER = gql`
-  query getUser($id: ID!) {
+  query getUser($id: ID) {
     user(_id: $id) {
       _id
       firstName
@@ -11,14 +11,20 @@ export const QUERY_USER = gql`
       createdNeeds {
         _id
         needText
-        needAuthor 
+        needAuthor{
+          firstName
+          lastName
+        } 
         needDate
         createdAt
       }
       signedUpNeeds {
         _id
         needText
-        needAuthor 
+        needAuthor{
+          firstName
+          lastName
+        } 
         needDate
         createdAt
       }
