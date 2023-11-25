@@ -4,7 +4,6 @@ import { useStoreContext } from "../../utils/store-context";
 import Auth from "../../utils/auth";
 
 import { StyledNav } from "../../styles/Nav.styled";
-import './style.scss';
 
 export default function Nav() {
   const [theme, dispatch] = useStoreContext('theme');
