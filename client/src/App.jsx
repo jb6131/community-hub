@@ -14,7 +14,6 @@ import Login from './components/Login';
 import Auth from './utils/auth';
 import Footer from './components/Footer';
 
-import './app.scss';
 
 const httpLink = createHttpLink({ uri: '/graphql' });
 
