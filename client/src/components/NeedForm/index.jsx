@@ -98,6 +98,9 @@ const NeedForm = ( {className} ) => {
 };
 
 export default styled (NeedForm) `
+
+
+
   h3 {
     display: flex;
     justify-content: center;
@@ -109,6 +112,11 @@ p {
     justify-content: center;
     margin-bottom: 3rem;
     margin-top: 3rem;
+}
+
+a {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 `
