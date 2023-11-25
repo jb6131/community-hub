@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { UseUserContext } from '../../utils/user-context';
+import styled from 'styled-components';
 
 import { ADD_NEED } from '../../utils/mutations';
 import { QUERY_NEEDS, QUERY_ME } from '../../utils/queries';
 
-import './index.css';
 import Auth from '../../utils/auth';
 
-const NeedForm = () => {
+const NeedForm = ( {className} ) => {
   const { user } = UseUserContext()
   const [needText, setNeedText] = useState('');
 
@@ -48,7 +48,7 @@ const NeedForm = () => {
   };
 
   return (
-    <div>
+    <div className= { className }>
       <h3>What kind of community project do you need support for?</h3>
 
       {Auth.loggedIn() ? (
@@ -97,4 +97,16 @@ const NeedForm = () => {
   );
 };
 
-export default NeedForm;
+export default styled (NeedForm) `
+  h3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+`
