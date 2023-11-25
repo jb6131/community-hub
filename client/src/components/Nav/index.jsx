@@ -4,7 +4,7 @@ import { useStoreContext } from "../../utils/store-context";
 import Auth from "../../utils/auth";
 
 import { StyledNav } from "../../styles/Nav.styled";
-// import './style.scss';
+
 
 export default function Nav() {
   const [theme, dispatch] = useStoreContext('theme');
@@ -25,16 +25,7 @@ export default function Nav() {
             </>
           )}
         </nav>
-        
-          {/* <section> */}
-            {/* <Link className="btn btn-lg btn-info m-2" to="/login">
-              Login
-            </Link>
-            <Link className="btn btn-lg btn-light m-2" to="/signup">
-              Signup
-            </Link> */}
-          {/* </ section> */}
-        
+
 
       </div>
     </StyledNav>
