@@ -72,6 +72,8 @@ const NeedForm = () => {
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
+              <label for="start">Event date:</label>
+              <input type="date" id="start" name="event-start" value="2023-11-27" min="2023-11-26" max="2024-12-31" />
             </div>
 
             <div className="col-12 col-lg-3">
