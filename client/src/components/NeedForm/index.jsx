@@ -56,7 +56,7 @@ const NeedForm = ( {className} ) => {
 
   return (
     <div className= { className }>
-      <h3>What kind of community project do you need support for?....TESTING</h3>
+      <h3>What kind of community project do you need support for?</h3>
 
       {Auth.loggedIn() ? (
         <>
