@@ -61,7 +61,7 @@ const typeDefs = `
     addNeed(needText: String!, needDate: String): Need
     signUpForNeed(needId: ID!): Need
     removeNeed(needId: ID!): User
-    removeSignUpForNeed(needId: ID!, signForNeedId: ID!): Need
+    withdrawFromNeed(needId: ID!): Need
   }
 `;
 

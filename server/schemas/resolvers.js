@@ -93,7 +93,6 @@ const resolvers = {
         return need;
       } throw AuthenticationError;
     },
-
     signUpForNeed: async (parent, { needId }, context) => {
       if (context.user) {
         const updatedNeed = await Need.findOneAndUpdate(
@@ -116,10 +115,36 @@ const resolvers = {
           .populate('signedUpUsers');
 
         return populatedNeed;
+      } else {
+        throw AuthenticationError;
       }
-      throw AuthenticationError;
     },
+    withdrawFromNeed: async (parent, { needId }, context) => {
+      if (context.user) {
+        const updatedNeed = await Need.findOneAndUpdate(
+          { _id: needId },
+          { $pull: { signedUpUsers: context.user._id } },
+          { new: true, runValidators: true }
+        );
 
+        if (!updatedNeed) {
+          throw new Error('Need not found or user not signed in.');
+        }
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { signedUpNeeds: needId } }
+        );
+
+        const populatedNeed = await Need.findById(updatedNeed._id)
+          .populate('needAuthor')
+          .populate('signedUpUsers');
+
+          return populatedNeed;
+      } else {
+        throw AuthenticationError;
+      }
+    }
   },
 };
 

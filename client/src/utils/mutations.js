@@ -79,10 +79,25 @@ export const SIGN_UP_FOR_NEED = gql`
   }
 `;
 
-export const REMOVE_SIGN_UP_USE = gql `
-  mutation removeSignUpForNeed($singUpForNeedId: ID!) {
-    removeSignUpForNeed(removeSignUpForNeedId: $removeSignUpForNeedId) {
+export const WITHDRAW_FROM_NEED = gql`
+  mutation withdrawFromNeed($needId: ID!) {
+    withdrawFromNeed(needId: $needId) {
       _id
+      needText
+      needAuthor {
+        _id
+        firstName
+        lastName
+        email
+      }
+      needDate
+      createdAt
+      signedUpUsers {
+        _id
+        firstName
+        lastName
+        email
+      }
     }
   }
-`
+`;
