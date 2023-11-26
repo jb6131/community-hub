@@ -1,5 +1,4 @@
 import auth from '../../utils/auth';
-import './style.scss';
 
 import { useQuery } from '@apollo/client';
 
