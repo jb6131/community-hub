@@ -2,15 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { UseUserContext } from '../../utils/user-context';
+import styled from 'styled-components';
 
 import { ADD_NEED } from '../../utils/mutations';
 import { QUERY_NEEDS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const NeedForm = () => {
+const NeedForm = ( {className} ) => {
   const { user } = UseUserContext()
   const [needText, setNeedText] = useState('');
+  const [needDate, setNeedDate] = useState('')
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -28,10 +30,12 @@ const NeedForm = () => {
       const { data } = await addNeed({
         variables: {
           needText,
+          needDate,
         },
       });
 
       setNeedText('');
+      setNeedDate('');
     } catch (err) {
       console.error(err);
     }
@@ -43,11 +47,15 @@ const NeedForm = () => {
     if (name === 'needText' && value.length <= 280) {
       setNeedText(value);
       setCharacterCount(value.length);
+    };
+    if (name === 'needDate' && value.length <= 180) {
+      setNeedDate(value);
+      setCharacterCount(value.length);
     }
   };
 
   return (
-    <div>
+    <div className= { className }>
       <h3>What kind of community project do you need support for?</h3>
 
       {Auth.loggedIn() ? (
@@ -72,8 +80,17 @@ const NeedForm = () => {
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
-              <label for="start">Event date:</label>
-              <input type="date" id="start" name="event-start" value="2023-11-27" min="2023-11-26" max="2024-12-31" />
+              <br/>
+              <label>Project date: </label>
+              <input
+                type="date"
+                name="needDate"
+                placeholder="Enter the project date"
+                value={needDate}
+                className="form-input w-100"
+                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                onChange={handleChange}
+              ></input>
             </div>
 
             <div className="col-12 col-lg-3">
@@ -91,11 +108,33 @@ const NeedForm = () => {
       ) : (
         <p>
           You need to be logged in to share your community project. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          <Link to="/login">login</Link>{' '} or {' '}<Link to="/signup">signup.</Link>
         </p>
       )}
     </div>
   );
 };
 
-export default NeedForm;
+export default styled (NeedForm) `
+
+
+
+  h3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+a {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+`

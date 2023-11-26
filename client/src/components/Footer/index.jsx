@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { StyledFooter } from '../../styles/Footer.styled';
 
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
-      <div className="container text-center mb-5">
+    <StyledFooter>
         {location.pathname !== '/' && (
           <button
             className="btn btn-dark mb-3"
@@ -17,8 +17,7 @@ const Footer = () => {
         <h4>
           © 2023 - CommunityHub
         </h4>
-      </div>
-    </footer>
+    </StyledFooter>
   );
 };
 

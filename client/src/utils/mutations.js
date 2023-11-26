@@ -31,7 +31,12 @@ export const ADD_NEED = gql`
     addNeed(needText: $needText, needDate: $needDate) {
       _id
       needText
-      needAuthor
+      needAuthor {
+        _id
+        firstName
+        lastName
+        email
+      }
       needDate
       createdAt
     }
@@ -56,7 +61,12 @@ export const SIGN_UP_FOR_NEED = gql`
     signUpForNeed(needId: $needId) {
       _id
       needText
-      needAuthor 
+      needAuthor {
+        _id
+        firstName
+        lastName
+        email
+      }
       needDate
       createdAt
       signedUpUsers {
@@ -69,3 +79,25 @@ export const SIGN_UP_FOR_NEED = gql`
   }
 `;
 
+export const WITHDRAW_FROM_NEED = gql`
+  mutation withdrawFromNeed($needId: ID!) {
+    withdrawFromNeed(needId: $needId) {
+      _id
+      needText
+      needAuthor {
+        _id
+        firstName
+        lastName
+        email
+      }
+      needDate
+      createdAt
+      signedUpUsers {
+        _id
+        firstName
+        lastName
+        email
+      }
+    }
+  }
+`;

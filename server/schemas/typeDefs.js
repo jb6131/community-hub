@@ -10,8 +10,8 @@ const typeDefs = `
 
   type Need {
     _id: ID!
-    needText: String!
-    needAuthor: ID!
+    needText: String
+    needAuthor: User
     needDate: String
     createdAt: String
     signedUpUsers: [User]
@@ -31,8 +31,8 @@ const typeDefs = `
   }
 
   type Query {
-    user: User
-    need: Need
+    user(_id:ID): User
+    singleNeed(needId: ID!): Need
     allNeeds: [NeedReturn]
     me: User
   }
@@ -59,9 +59,9 @@ const typeDefs = `
     signup(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addNeed(needText: String!, needDate: String): Need
-    addSignUpForNeed(needId: ID!, signUpForNeedText: String!): Need
-    removeNeed(_id: ID!): User
-    removeSignUpForNeed(needId: ID!, signForNeedId: ID!): Need
+    signUpForNeed(needId: ID!): Need
+    removeNeed(needId: ID!): User
+    withdrawFromNeed(needId: ID!): Need
   }
 `;
 

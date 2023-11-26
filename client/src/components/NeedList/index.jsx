@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
   if (!needs.length) {
-    return <h3>No Community Needs Yet</h3>;
+    return <h3 style={{textAlign: "center", marginTop: "11rem", marginBottom: "11rem"}}>No Community Needs Yet</h3>;
   }
 
   return (
@@ -16,7 +16,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
                 <>
                   <Link
                     className="text-light"
-                    to={`/profiles/${need.needAuthor._id}`}
+                    to={`/profile/${need.needAuthor._id}`}
                   >
                     {need.needAuthor.firstName} {need.needAuthor.lastName}{" "}
                     <br />
@@ -35,6 +35,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
             </h4>
             <div className="card-body bg-light p-2">
               <p>{need.needText}</p>
+              <p>Project date: {need.needDate}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
