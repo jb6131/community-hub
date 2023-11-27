@@ -11,20 +11,12 @@ export const QUERY_USER = gql`
       createdNeeds {
         _id
         needText
-        needAuthor{
-          firstName
-          lastName
-        } 
         needDate
         createdAt
       }
       signedUpNeeds {
         _id
         needText
-        needAuthor{
-          firstName
-          lastName
-        } 
         needDate
         createdAt
       }

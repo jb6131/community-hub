@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 
+import UserNeedList from '../../components/UserNeedList';
+
 import { USER_PROFILE } from '../../utils/actions';
 import { QUERY_USER } from '../../utils/queries';
 import { useStoreContext } from '../../utils/store-context';
@@ -9,7 +11,7 @@ import './style.scss';
 
 export default function Profile() {
   const [user, dispatch] = useStoreContext('user');
-  const { data, loading } = useQuery(QUERY_USER);
+  const { data, loading, refetch } = useQuery(QUERY_USER);
 
   useEffect(() => {
     if (data && data.user) {
@@ -39,8 +41,10 @@ export default function Profile() {
             <span className="display-user__label">Email:</span> <span>{user.profile.email}</span>
           </li>
         </ul>
-      )
-      }
+      )}
+      {user?.profile && (
+        <UserNeedList needs={user.profile.createdNeeds} refetchNeeds={refetch} />
+      )}
     </div>
   );
 };

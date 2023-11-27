@@ -60,7 +60,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addNeed(needText: String!, needDate: String): Need
     signUpForNeed(needId: ID!): Need
-    removeNeed(needId: ID!): User
+    removeNeed(needId: ID!): Need
     withdrawFromNeed(needId: ID!): Need
   }
 `;

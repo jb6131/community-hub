@@ -8,7 +8,11 @@ const resolvers = {
         throw AuthenticationError;
       }
 
-      return await User.findById(context.user._id);
+      const user = await User.findById(context.user._id)
+        .populate('createdNeeds')
+        .populate('signedUpNeeds');
+
+      return user;
     },
     singleNeed: async (parent, { needId }, context) => {
       if(!context.user) {
