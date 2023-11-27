@@ -41,11 +41,11 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
+    <main>
+      <div>
+        <div>
+          <h4>Sign Up</h4>
+          <div>
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -54,7 +54,6 @@ const Signup = () => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input"
                   placeholder="Your first name"
                   name="firstName"
                   type="text"
@@ -62,7 +61,6 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
                   placeholder="Your last name"
                   name="lastName"
                   type="text"
@@ -70,7 +68,6 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -78,7 +75,6 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
                   placeholder="******"
                   name="password"
                   type="password"
@@ -86,7 +82,6 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
@@ -96,7 +91,7 @@ const Signup = () => {
             )}
 
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+              <div>
                 {error.message}
               </div>
             )}
