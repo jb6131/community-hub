@@ -7,9 +7,5 @@ export const StyledFooter = styled.footer `
 color:white;
 font-size: larger;
 padding: 2rem;
-background-image:url(${img});
-background-repeat: no-repeat;
-background-size:cover;
-background-position: center center;
 
 `

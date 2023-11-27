@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import './index.css';
 import AuthService from "../../utils/auth";
 
 const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
@@ -16,12 +17,10 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
 
   return (
     <div>
-      <div>
-        <p>{message}</p>
-      </div>
       {showTitle && <h3>{title}</h3>}
       {needs &&
         needs.map((need) => (
+          <section className="needInfo">
           <div key={need._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showFirstName ? (
@@ -65,6 +64,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
               </Link>
             )}
           </div>
+          </section>
         ))}
     </div>
   );
