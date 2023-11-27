@@ -117,7 +117,10 @@ const NeedForm = ( {className} ) => {
 
 export default styled (NeedForm) `
 
-
+width: 50%;
+margin-left: 24rem;
+background-color: #d2d89058;
+border-radius: 50px;
 
   h3 {
     display: flex;
