@@ -5,13 +5,11 @@ import { useQuery, useMutation } from "@apollo/client";
 import SignUpForNeedList from "../components/SignUpList";
 
 import { QUERY_SINGLE_NEED } from "../utils/queries";
-import { SIGN_UP_FOR_NEED, WITHDRAW_FROM_NEED } from "../utils/mutations";
+import { SIGN_UP_FOR_NEED } from "../utils/mutations";
 
 const SingleNeed = () => {
   const { needId } = useParams();
-  const [signUpForNeed, { error: signUpError }] = useMutation(SIGN_UP_FOR_NEED);
-  const [withdrawFromNeed, { error: withdrawError }] = useMutation(WITHDRAW_FROM_NEED);
-  const [message, setMessage] = useState("");
+  const [signUpForNeed] = useMutation(SIGN_UP_FOR_NEED);
 
   const { loading, data, refetch } = useQuery(QUERY_SINGLE_NEED, {
     variables: { needId: needId },
@@ -22,24 +20,11 @@ const SingleNeed = () => {
   const handleSignUp = async () => {
     try {
       await signUpForNeed({ variables: { needId } });
-      setMessage("Successfully signed up!");
       refetch();
     } catch (error) {
       console.error("Error signing up for need: ", error);
-      setMessage("Error occurred during sign up.");
     }
   };
-
-  const handleWithdraw = async () => {
-    try {
-      await withdrawFromNeed({ variables: { needId } });
-      setMessage("Successfully withdrawn!");
-      refetch();
-    } catch (error) {
-      console.error("Error withdrawing from need: ", error);
-      setMessage("Error occurred during withdrawal.");
-    }
-  }
 
   console.log(loading);
 
@@ -74,14 +59,6 @@ const SingleNeed = () => {
 
       <div>
         <button onClick={handleSignUp}>Sign Up</button>
-      </div>
-
-      <div>
-        <button onClick={handleWithdraw}>Withdraw</button>
-      </div>
-
-      <div>
-        <p>{message}</p>
       </div>
 
       <div className="my-5">
