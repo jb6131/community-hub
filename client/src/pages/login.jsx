@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
 import { useMutation } from '@apollo/client';
 import { LOGIN_MUTATION } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
 // eslint-disable-next-line no-unused-vars
-const Login = (props) => {
+const Login = ({ className }) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_MUTATION);
 
@@ -42,7 +44,7 @@ const Login = (props) => {
   };
 
   return (
-    <main>
+    <main className={ className }>
       <div>
         <div>
           <h4>Login</h4>
@@ -89,4 +91,9 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default styled (Login)`
+text-align: center;
+  form {
+    text-align: center;
+  }
+`;
