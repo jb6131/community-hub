@@ -36,6 +36,34 @@ const startApolloServer = async () => {
     });
   }
 
+  // app.post('/create-checkout-session', async (req, res) => {
+  // const session = await stripe.checkout.sessions.create({
+  //   line_items: [
+  //     {
+  //       price: 'price_1OG4SiELqHvNcxjUD8tgBDA5',
+  //       quantity: 1,
+  //     },
+  //     {
+  //       price: 'price_1OG4SLELqHvNcxjUR2nmq4hJ',
+  //       quantity: 1,
+  //     },
+  //     {
+  //       price: 'price_1OG4S5ELqHvNcxjUfcbpTwZx',
+  //       quantity: 1,
+  //     },
+  //     {
+  //       price: 'price_1OG4RZELqHvNcxjUXGhUAMkS',
+  //       quantity: 1,
+  //     },
+  //   ],
+  //   mode: 'payment',
+  //   success_url: `${whispering-brook-60496-af6838df675c.herokuapp.com}?success=true`,
+  //   cancel_url: `${whispering-brook-60496-af6838df675c.herokuapp.com}?canceled=true`,
+  // });
+
+  // res.redirect(303, session.url);
+  // });
+
   db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
@@ -43,5 +71,6 @@ const startApolloServer = async () => {
     });
   });
 };
+
 
 startApolloServer();
