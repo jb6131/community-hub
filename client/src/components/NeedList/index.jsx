@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import '/index.css'
 
 const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
   if (!needs.length) {

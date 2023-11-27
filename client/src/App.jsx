@@ -13,7 +13,7 @@ import Nav from './components/Nav';
 import Login from './components/Login';
 import Auth from './utils/auth';
 import Footer from './components/Footer';
-
+import './App.css';
 
 const httpLink = createHttpLink({ uri: '/graphql' });
 
