@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import '/index.css'
+import './index.css';
 
 const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
   if (!needs.length) {
@@ -7,10 +7,11 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
   }
 
   return (
-    <div>
+    <div className="needList">
       {showTitle && <h3>{title}</h3>}
       {needs &&
         needs.map((need) => (
+          <section className="needInfo">
           <div key={need._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showFirstName ? (
@@ -45,6 +46,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
               Participate in this community project.
             </Link>
           </div>
+          </section>
         ))}
     </div>
   );
