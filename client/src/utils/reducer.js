@@ -11,7 +11,8 @@ export const reducer = (state, { type, payload = null }) => {
                         id: payload._id,
                         email: payload.email,
                         firstName: payload.firstName,
-                        lastName: payload.lastName
+                        lastName: payload.lastName,
+                        createdNeeds: payload.createdNeeds
                     }
                 }
             }

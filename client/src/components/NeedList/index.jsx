@@ -1,13 +1,22 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import './index.css';
+import AuthService from "../../utils/auth";
 
 const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
+  const isAuthenticated = AuthService.loggedIn();
+  const [message, setMessage] = useState("");
+
+  const messageHandler = () => {
+    setMessage("Please login or sign-up if you would like to participate!");
+  }
+
   if (!needs.length) {
     return <h3 style={{textAlign: "center", marginTop: "11rem", marginBottom: "11rem"}}>No Community Needs Yet</h3>;
   }
 
   return (
-    <div className="needList">
+    <div>
       {showTitle && <h3>{title}</h3>}
       {needs &&
         needs.map((need) => (
@@ -39,12 +48,21 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
               <p>{need.needText}</p>
               <p>Project date: {need.needDate}</p>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/needs/${need._id}`}
-            >
-              Participate in this community project.
-            </Link>
+            { isAuthenticated ? (
+              <Link
+                className="btn btn-primary btn-block btn-squared"
+                to={`/needs/${need._id}`}
+              >
+                Participate in this community project.
+              </Link>
+            ) : (
+              <Link
+                className="btn btn-primary btn-block btn-squared"
+                onClick={messageHandler}
+              >
+                Participate in this community project.
+              </Link>
+            )}
           </div>
           </section>
         ))}

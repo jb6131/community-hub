@@ -8,7 +8,10 @@ const ProductDisplay = () => (
         alt="The cover of Stubborn Attachments"
       /> */}
       <div className="description">
-      <h3>Donation 1</h3>
+      <h3>Donate through CommunityHub!</h3>
+      <h5>$50.00</h5>
+      <h5>$25.00</h5>
+      <h5>$10.00</h5>
       <h5>$5.00</h5>
       </div>
     </div>
