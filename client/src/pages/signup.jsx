@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { useMutation } from '@apollo/client';
 import { SIGNUP_MUTATION } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const Signup = () => {
+const Signup = ( {className} ) => {
   const [formState, setFormState] = useState({
     firstName: '',
     lastName: '',
@@ -41,7 +42,7 @@ const Signup = () => {
   };
 
   return (
-    <main>
+    <main className={ className }>
       <div>
         <div>
           <h4>Sign Up</h4>
@@ -102,4 +103,9 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default styled (Signup)`
+text-align: center;
+  form {
+    text-align: center;
+  }
+`;
