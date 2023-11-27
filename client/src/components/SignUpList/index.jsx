@@ -3,21 +3,22 @@ import { useQuery, useMutation } from "@apollo/client";
 
 import { USER_PROFILE } from "../../utils/actions";
 import { QUERY_USER } from "../../utils/queries";
-import { REMOVE_NEED } from "../../utils/mutations";
+import { WITHDRAW_FROM_NEED } from "../../utils/mutations";
 // import { useStoreContext } from '../../utils/store-context';
 
 const SignUpForNeedList = ({ needId, signedUpUsers = [] }) => {
   // const [person, dispatch] = useStoreContext('user');
-  const { data, loading } = useQuery(QUERY_USER);
+  const { data, loading, refetch } = useQuery(QUERY_USER);
 
-  const [removeNeed] = useMutation(REMOVE_NEED);
+  const [withdrawFromNeed] = useMutation(WITHDRAW_FROM_NEED);
 
-  async function removeHandler() {
-    await removeNeed({
-      variables: {
-        needId: needId,
-      },
-    });
+  const handleWithdraw = async () => {
+    try {
+      await withdrawFromNeed({ variables: { needId } });
+      refetch();
+    } catch (error) {
+      console.error("Error withdrawing from need: ", error);
+    }
   }
 
   if (!signedUpUsers.length) {
@@ -46,7 +47,7 @@ const SignUpForNeedList = ({ needId, signedUpUsers = [] }) => {
                 {/* <p>{user._id}</p> */}
                 {/* <p>{data.user._id}</p> */}
                 {user._id == data.user._id ? (
-                  <button onClick={removeHandler}>Remove</button>
+                  <button onClick={handleWithdraw}>Withdraw</button>
                 ) : null}
               </h5>
             </div>
