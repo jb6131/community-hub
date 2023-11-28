@@ -114,11 +114,15 @@ const NeedForm = ( {className} ) => {
 
 export default styled (NeedForm) `
 margin: auto;
-color: black;
+color: white;
 width: 50%;
-background-color: #d2d89023;
+background-color: #7f8537c3;
 border-radius: 50px;
 outline: 2px solid black;
+font-size: 20px;
+padding: .25%;
+margin-top: 2rem;
+
 
 
 

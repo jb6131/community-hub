@@ -1,18 +1,23 @@
 body {
     text-align: center;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .needList {
-    color:white    
+    color:white 
+       
 }
 
 .needInfo {
 margin: auto;
 width: 50%;
-background-color: #d2d8904d;
+background-color: #7f8537c3;
 border-radius: 50px;
 outline: 2px solid black;
 color:white;
+padding: .75%;
+margin-bottom: 2rem;
 }
 
 .Modal {
