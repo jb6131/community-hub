@@ -8,7 +8,6 @@ const Footer = () => {
     <StyledFooter>
         {location.pathname !== '/' && (
           <button
-            className="btn btn-dark mb-3"
             onClick={() => navigate(-1)}
           >
             &larr; Go Back
