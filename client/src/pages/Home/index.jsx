@@ -26,7 +26,7 @@ const Home = () => {
           ) : (
             <NeedList
               needs={needs}
-              title="Current community project board"
+              title="Current Community Project Board"
             />
           )}
         </div>

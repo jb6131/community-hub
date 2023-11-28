@@ -79,20 +79,20 @@ const NeedForm = ( {className} ) => {
                 onChange={handleChange}
               ></textarea>
               <br/>
-              <label>Project date: </label>
+              <label>Project date and time: </label>
               <input
-                type="date"
+                type="datetime-local"
                 name="needDate"
-                placeholder="Enter the project date"
+                placeholder="Enter the project date and time"
                 value={needDate}
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                style={{ lineHeight: '2.0', resize: 'vertical' }}
                 onChange={handleChange}
               ></input>
             </div>
 
-            <div>
-              <button type="submit">
-                Add Need
+            <div className="col-12 col-lg-3">
+              <button className="btn btn-primary btn-block py-3" type="submit">
+                Add Project
               </button>
             </div>
             {error && (

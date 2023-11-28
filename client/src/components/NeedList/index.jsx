@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Modal from 'react-modal';
 import './index.css';
 import AuthService from "../../utils/auth";
 
+Modal.setAppElement('#root');
+
 const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
   const isAuthenticated = AuthService.loggedIn();
-  const [message, setMessage] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false);
 
-  const messageHandler = () => {
-    setMessage("Please login or sign-up if you would like to participate!");
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsOpen(false);
   }
 
   if (!needs.length) {
@@ -18,8 +25,20 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
   return (
     <div>
       <h3>Current community project board</h3>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        className="Modal"
+        overlayClassName="Overlay"
+      >
+        <div className="ModalText">
+          <h2>Please login or signup if you would like to participate!</h2>
+          <button onClick={closeModal}>Close</button>
+        </div>
+      </Modal>
+      {showTitle && <h3>{title}</h3>}
       {needs &&
-        needs.map((need) => (
+        [...needs].reverse().map((need) => (
           <section className="needInfo">
           <div key={need._id} >
             <h4>
@@ -55,7 +74,8 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
               </Link>
             ) : (
               <Link
-                onClick={messageHandler}
+                className="btn btn-primary btn-block btn-squared"
+                onClick={openModal}
               >
                 Participate in this community project.
               </Link>

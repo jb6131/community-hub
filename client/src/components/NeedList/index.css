@@ -13,7 +13,29 @@ background-color: #d2d8904d;
 border-radius: 50px;
 outline: 2px solid black;
 color:white;
+}
 
+.Modal {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    right: 25%;
+    bottom: 30%;
+    background-color: rgb(255, 248, 236);
+}
+
+.ModalText {
+    margin: 5rem;
+    text-align: center;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.247);
 }
 
 a {
