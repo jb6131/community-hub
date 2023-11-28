@@ -21,12 +21,11 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
       {needs &&
         needs.map((need) => (
           <section className="needInfo">
-          <div key={need._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+          <div key={need._id} >
+            <h4>
               {showFirstName ? (
                 <>
                   <Link
-                    className="text-light"
                     to={`/profile/${need.needAuthor._id}`}
                   >
                     {need.needAuthor.firstName} {need.needAuthor.lastName}{" "}
@@ -44,20 +43,18 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
                 </>
               )}
             </h4>
-            <div className="card-body bg-light p-2">
+            <div>
               <p>{need.needText}</p>
               <p>Project date: {need.needDate}</p>
             </div>
             { isAuthenticated ? (
               <Link
-                className="btn btn-primary btn-block btn-squared"
                 to={`/needs/${need._id}`}
               >
                 Participate in this community project.
               </Link>
             ) : (
               <Link
-                className="btn btn-primary btn-block btn-squared"
                 onClick={messageHandler}
               >
                 Participate in this community project.
