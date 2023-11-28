@@ -1,5 +1,5 @@
-const { User, Need } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { User, Need } = require("../models");
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -9,35 +9,35 @@ const resolvers = {
       }
 
       const user = await User.findById(context.user._id)
-        .populate('createdNeeds')
-        .populate('signedUpNeeds');
+        .populate("createdNeeds")
+        .populate("signedUpNeeds");
 
       return user;
     },
     singleNeed: async (parent, { needId }, context) => {
-      if(!context.user) {
+      if (!context.user) {
         throw AuthenticationError;
       }
-      
+
       const need = await Need.findById(needId)
-        .populate('needAuthor')
-        .populate('signedUpUsers');
+        .populate("needAuthor")
+        .populate("signedUpUsers");
 
       if (!need) {
-        throw new Error ('Need not found');
+        throw new Error("Need not found");
       }
 
       return need;
     },
     // gets all needs (for homepage to show list of all available needs)
     allNeeds: async () => {
-      return await Need.find({}).populate('needAuthor');
+      return await Need.find({}).populate("needAuthor");
     },
     me: async (parent, args, context) => {
-      if(context.user) {
-        return User.findOne({_id: context.user._id }).populate()
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate();
       }
-    }
+    },
   },
   Mutation: {
     signup: async (parent, args) => {
@@ -70,14 +70,15 @@ const resolvers = {
           needDate,
           needAuthor: context.user._id,
         });
-        await need.populate('needAuthor');
+        await need.populate("needAuthor");
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { createdNeeds: need._id } }
         );
-        console.log(need)
+        console.log(need);
         return need;
-      } throw AuthenticationError;
+      }
+      throw AuthenticationError;
     },
     removeNeed: async (parent, { needId }, context) => {
       if (context.user) {
@@ -95,7 +96,8 @@ const resolvers = {
           );
         }
         return need;
-      } throw AuthenticationError;
+      }
+      throw AuthenticationError;
     },
     signUpForNeed: async (parent, { needId }, context) => {
       if (context.user) {
@@ -106,7 +108,7 @@ const resolvers = {
         );
 
         if (!updatedNeed) {
-          throw new Error('Need not found!');
+          throw new Error("Need not found!");
         }
 
         await User.findOneAndUpdate(
@@ -115,8 +117,8 @@ const resolvers = {
         );
 
         const populatedNeed = await Need.findById(updatedNeed._id)
-          .populate('needAuthor')
-          .populate('signedUpUsers');
+          .populate("needAuthor")
+          .populate("signedUpUsers");
 
         return populatedNeed;
       } else {
@@ -132,7 +134,7 @@ const resolvers = {
         );
 
         if (!updatedNeed) {
-          throw new Error('Need not found or user not signed in.');
+          throw new Error("Need not found or user not signed in.");
         }
 
         await User.findOneAndUpdate(
@@ -141,14 +143,14 @@ const resolvers = {
         );
 
         const populatedNeed = await Need.findById(updatedNeed._id)
-          .populate('needAuthor')
-          .populate('signedUpUsers');
+          .populate("needAuthor")
+          .populate("signedUpUsers");
 
-          return populatedNeed;
+        return populatedNeed;
       } else {
         throw AuthenticationError;
       }
-    }
+    },
   },
 };
 

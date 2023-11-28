@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // gets a user by ID
 export const QUERY_USER = gql`
