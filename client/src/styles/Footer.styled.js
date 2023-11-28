@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import img from '../images/AdobeStock_566982066.jpeg';
 
 
 export const StyledFooter = styled.footer `
@@ -7,5 +6,7 @@ export const StyledFooter = styled.footer `
 color:white;
 font-size: larger;
 padding: 2rem;
+background-color: #d2d8904d;
+
 
 `

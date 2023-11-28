@@ -17,7 +17,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
 
   return (
     <div>
-      {showTitle && <h3>{title}</h3>}
+      <h3>Current community project board</h3>
       {needs &&
         needs.map((need) => (
           <section className="needInfo">

@@ -14,7 +14,6 @@ const Home = () => {
   const needs = data?.allNeeds || [];
 
   return (
-    <main>
       <div>
         <div
           style={{ border: '1px dotted #1a1a1a' }}
@@ -32,7 +31,6 @@ const Home = () => {
           )}
         </div>
       </div>
-    </main>
   );
 };
 

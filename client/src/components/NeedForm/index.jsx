@@ -113,13 +113,13 @@ const NeedForm = ( {className} ) => {
 };
 
 export default styled (NeedForm) `
-
-color: white;
+margin: auto;
+color: black;
 width: 50%;
-margin-left: 24rem;
-background-color: #d2d8904d;
+background-color: #d2d89023;
 border-radius: 50px;
 outline: 2px solid black;
+
 
 
   h3 {
