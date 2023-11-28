@@ -26,12 +26,12 @@ const UserNeedList = ({ needs, refetchNeeds }) => {
       </div>
       {needs &&
         needs.map((need) => (
-          <div key={need._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+          <div key={need._id}>
+            <h4>
               Need Title: {need.needText}
               <br />
             </h4>
-            <div className="card-body bg-light p-2">
+            <div >
               <span style={{ fontSize: "1rem" }}>
                 Need Date: {need.needDate}
               </span>

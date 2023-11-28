@@ -36,13 +36,13 @@ const SignUpForNeedForm = ({ needId }) => {
             }`}
           >
             Character Count: {characterCount}/280
-            {error && <span className="ml-2">{error.message}</span>}
+            {error && <span >{error.message}</span>}
           </p>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+  
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
+            <div>
               <textarea
                 name="signUpForNeedText"
                 placeholder="Add your name..."
@@ -53,8 +53,8 @@ const SignUpForNeedForm = ({ needId }) => {
               ></textarea>
             </div>
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+            <div >
+              <button type="submit">
                 Submit
               </button>
             </div>
