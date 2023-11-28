@@ -1,17 +1,18 @@
+body {
+    text-align: center;
+}
+
 .needList {
     color:white    
 }
 
 .needInfo {
-    width: 50%;
-    margin-left: 24rem;
-    background-color: #d2d8904d;
-    border-radius: 50px;
-    outline: 2px solid black;
-    padding: 10px;
-    padding-left: 3rem;
-    margin-bottom: 3rem;
-    color:white;
+margin: auto;
+width: 50%;
+background-color: #d2d8904d;
+border-radius: 50px;
+outline: 2px solid black;
+color:white;
 }
 
 .Modal {
@@ -39,4 +40,9 @@
 
 a {
     color:white;
+}
+
+h3 {
+    color:white;
+    text-align: center;
 }

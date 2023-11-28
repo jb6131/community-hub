@@ -24,6 +24,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
 
   return (
     <div>
+      <h3>Current community project board</h3>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
