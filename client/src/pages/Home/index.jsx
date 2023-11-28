@@ -26,7 +26,7 @@ const Home = () => {
           ) : (
             <NeedList
               needs={needs}
-              title="Some Feed for Need(s)..."
+              title="Current Community Project Board"
             />
           )}
         </div>
