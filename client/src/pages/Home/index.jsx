@@ -16,7 +16,6 @@ const Home = () => {
   return (
       <div>
         <div
-          style={{ border: '1px dotted #1a1a1a' }}
         >
           <NeedForm />
         </div>
@@ -26,7 +25,6 @@ const Home = () => {
           ) : (
             <NeedList
               needs={needs}
-              title="Current Community Project Board"
             />
           )}
         </div>

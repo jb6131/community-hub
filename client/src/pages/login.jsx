@@ -96,4 +96,4 @@ text-align: center;
   form {
     text-align: center;
   }
-`;
+`
