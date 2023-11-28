@@ -36,16 +36,15 @@ const SingleNeed = () => {
   }
 
   return (
-    <div className="my-3">
-      <h3 className="card-header bg-dark text-light p-2 m-0">
+    <div>
+      <h3>
         {need.needAuthor?.firstName} {need?.needAuthor?.lastName} <br />
         <span style={{ fontSize: "1rem" }}>
           posted this need on {need.createdAt}
         </span>
       </h3>
-      <div className="bg-light py-4">
+      <div>
         <blockquote
-          className="p-4"
           style={{
             fontSize: "1.5rem",
             fontStyle: "italic",
@@ -61,7 +60,7 @@ const SingleNeed = () => {
         <button onClick={handleSignUp}>Sign Up</button>
       </div>
 
-      <div className="my-5">
+      <div>
         <SignUpForNeedList
           needId={need._id}
           signedUpUsers={need.signedUpUsers}

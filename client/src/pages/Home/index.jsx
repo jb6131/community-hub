@@ -15,11 +15,13 @@ const Home = () => {
 
   return (
     <main>
-      <div className="flex-row justify-center">
-        <div>        
+      <div>
+        <div
+          style={{ border: '1px dotted #1a1a1a' }}
+        >
           <NeedForm />
         </div>
-        <div className="col-12 col-md-8 mb-3">
+        <div>
           {loading ? (
             <div>Loading...</div>
           ) : (
