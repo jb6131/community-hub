@@ -68,15 +68,13 @@ const NeedForm = ( {className} ) => {
             Character Count: {characterCount}/280
           </p>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
+            <div>
               <textarea
                 name="needText"
                 placeholder="Here's a new community project..."
                 value={needText}
-                className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
@@ -87,7 +85,6 @@ const NeedForm = ( {className} ) => {
                 name="needDate"
                 placeholder="Enter the project date"
                 value={needDate}
-                className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></input>
@@ -99,7 +96,7 @@ const NeedForm = ( {className} ) => {
               </button>
             </div>
             {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
+              <div >
                 {error.message}
               </div>
             )}
@@ -123,6 +120,7 @@ margin-left: 24rem;
 background-color: #d2d8904d;
 border-radius: 50px;
 outline: 2px solid black;
+
 
   h3 {
     display: flex;
