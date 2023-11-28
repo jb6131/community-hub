@@ -24,7 +24,6 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
 
   return (
     <div>
-      <h3>Current community project board</h3>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -39,7 +38,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
       {showTitle && <h3>{title}</h3>}
       {needs &&
         [...needs].reverse().map((need) => (
-          <section className="needInfo">
+          <section key={need._id} className="needInfo">
           <div key={need._id} >
             <h4>
               {showFirstName ? (

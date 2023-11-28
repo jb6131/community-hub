@@ -13,6 +13,9 @@ export default function Nav() {
     <StyledNav>
       <div>
           <p className="title">CommunityHub</p>
+      </div> 
+      <div className="donate-link">
+          <Link to="https://buy.stripe.com/test_dR6dTsbRW9vO2QMdQQ">Donate to CommunityHub!</Link>
       </div>
 
       <div>
