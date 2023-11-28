@@ -37,7 +37,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
       </Modal>
       {showTitle && <h3>{title}</h3>}
       {needs &&
-        needs.map((need) => (
+        [...needs].reverse().map((need) => (
           <section className="needInfo">
           <div key={need._id} >
             <h4>
