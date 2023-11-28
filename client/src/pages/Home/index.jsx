@@ -7,6 +7,8 @@ import NeedForm from '../../components/NeedForm';
 
 import { QUERY_NEEDS } from '../../utils/queries';
 
+import './index.css';
+
 const Home = () => {
   const { loading, data } = useQuery(QUERY_NEEDS);
   const needs = data?.allNeeds || [];
@@ -25,7 +27,7 @@ const Home = () => {
           ) : (
             <NeedList
               needs={needs}
-              title="Some Feed for Need(s)..."
+              title="Current community project board"
             />
           )}
         </div>
