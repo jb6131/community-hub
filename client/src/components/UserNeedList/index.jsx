@@ -22,7 +22,7 @@ const UserNeedList = ({ needs, refetchNeeds }) => {
   return (
     <div>
       <div>
-        <h2>Your Created Needs</h2>
+        <h2>Your Projects</h2>
       </div>
       {needs &&
         needs.map((need) => (

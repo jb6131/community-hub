@@ -90,9 +90,9 @@ const NeedForm = ( {className} ) => {
               ></input>
             </div>
 
-            <div>
-              <button type="submit">
-                Add Need
+            <div className="col-12 col-lg-3">
+              <button className="btn btn-primary btn-block py-3" type="submit">
+                Add Project
               </button>
             </div>
             {error && (
