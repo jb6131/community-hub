@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { useMutation } from '@apollo/client';
-import { LOGIN_MUTATION } from '../utils/mutations';
+import { LOGIN_MUTATION } from '../../utils/mutations';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 // eslint-disable-next-line no-unused-vars
 const Login = ({ className }) => {
@@ -46,7 +45,7 @@ const Login = ({ className }) => {
   return (
     <main className={ className }>
       <div>
-        <div>
+        <div class="title">
           <h4>Login</h4>
           <div>
             {data ? (
@@ -55,22 +54,22 @@ const Login = ({ className }) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
+              <form class="form" onSubmit={handleFormSubmit}>
+                <input class="input"
                   placeholder="Your email"
                   name="email"
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
-                <input
+                <input class="input"
                   placeholder="******"
                   name="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
+                <button class="btn"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
