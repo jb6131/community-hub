@@ -1,0 +1,16 @@
+.user-need {
+    margin: auto;
+    width: 40%;
+    background-color: #7f8537c3;
+    border-radius: 50px;
+    outline: 2px solid black;
+    color:white;
+    padding: .75%;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    font-size: 1.5rem;
+    padding: 1.5%;
+    border-radius: 10%;
+}

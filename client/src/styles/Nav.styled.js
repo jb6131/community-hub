@@ -13,4 +13,29 @@ p {
     color: white;
     display: flex;
     }
+
+nav {
+    float: left;
+    display: flex;
+    margin-left: 33rem;
+}
+
+.nav-link {
+    display: flex;
+    margin: 5%
+}
+
+.nav-link:hover {
+    color: yellow;
+}
+
+.donate-link {
+    margin-left: 25%;
+}
+
+.donate-link:hover {
+    color: yellow;
+}
+
+
 `

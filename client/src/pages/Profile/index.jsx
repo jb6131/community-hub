@@ -35,7 +35,7 @@ export default function Profile() {
             <span className="display-user__label">User ID:</span> <span>{user.profile.id}</span>
           </li>
           <li>
-            <span className="display-user__label">Fullname:</span> <span>{user.profile.firstName} {user.profile.lastName}</span>
+            <span className="display-user__label">Full Name:</span> <span>{user.profile.firstName} {user.profile.lastName}</span>
           </li>
           <li>
             <span className="display-user__label">Email:</span> <span>{user.profile.email}</span>
