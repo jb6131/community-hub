@@ -71,11 +71,11 @@ const NeedForm = ( {className} ) => {
             onSubmit={handleFormSubmit}
           >
             <div>
-              <textarea
+              <textarea className="text"
                 name="needText"
                 placeholder="Here's a new community project..."
                 value={needText}
-                style={{ lineHeight: '4.5', width: '800px', resize: 'vertical' }}
+                // style={{ lineHeight: '4.5', width: '800px', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
               <br/>
@@ -123,9 +123,6 @@ font-size: 20px;
 padding: .25%;
 margin-top: 2rem;
 
-
-
-
   h3 {
     display: flex;
     justify-content: center;
@@ -142,6 +139,12 @@ p {
 a {
   padding-left: 3px;
   padding-right: 3px;
+}
+
+textarea {
+  justify-content: center;
+  width: 800px;
+  max-width: 100%;
 }
 
 `

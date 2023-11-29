@@ -18,11 +18,13 @@ nav {
     float: left;
     display: flex;
     margin-left: 33rem;
+    max-width: 100%;
 }
 
 .nav-link {
     display: flex;
-    margin: 5%
+    margin: 5%;
+    max-width: 100%;
 }
 
 .nav-link:hover {
@@ -35,6 +37,18 @@ nav {
 
 .donate-link:hover {
     color: yellow;
+}
+
+@media screen and (max-width: 1280px) {
+    nav {
+        margin-left: 10px;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .donate-link {
+        flex-wrap: wrap;
+        margin-left: 15%;
+    }
 }
 
 

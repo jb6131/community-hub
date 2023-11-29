@@ -21,7 +21,7 @@ const UserNeedList = ({ needs, refetchNeeds }) => {
 
   return (
     <div>
-      <div>
+      <div class="projects">
         <h2>Your Projects</h2>
       </div>
       {needs &&

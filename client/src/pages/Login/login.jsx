@@ -63,7 +63,7 @@ const Login = ({ className }) => {
                   onChange={handleChange}
                 />
                 <input class="input"
-                  placeholder="******"
+                  placeholder="Password"
                   name="password"
                   type="password"
                   value={formState.password}
