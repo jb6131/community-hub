@@ -44,7 +44,7 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
               {showFirstName ? (
                 <>
                   <Link
-                    to={`/profile/${need.needAuthor._id}`}
+                    to={`/profile/`}
                   >
                     {need.needAuthor.firstName} {need.needAuthor.lastName}{" "}
                     <br />
