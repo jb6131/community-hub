@@ -76,4 +76,10 @@ nav {
         align: center;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .title {
+        font-size: 2.4rem;
+    }
+}
 `
