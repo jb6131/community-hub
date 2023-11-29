@@ -153,4 +153,8 @@ textarea {
 .LISU p {
   font-size: 35px;
 }
+
+@media screen and (max-width: 768px) {
+  width: 75%;
+}
 `

@@ -6,18 +6,17 @@ body {
 
 .needList {
     color:white 
-       
 }
 
 .needInfo {
-margin: auto;
-width: 50%;
-background-color: #7f8537c3;
-border-radius: 50px;
-outline: 2px solid black;
-color:white;
-padding: .75%;
-margin-bottom: 2rem;
+    margin: auto;
+    width: 50%;
+    background-color: #7f8537c3;
+    border-radius: 50px;
+    outline: 2px solid black;
+    color:white;
+    padding: .75%;
+    margin-bottom: 2rem;
 }
 
 .Modal {
@@ -50,4 +49,25 @@ a {
 h3 {
     color:white;
     text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .needInfo {
+        width: 75%;
+        padding: 2%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Modal {
+        top: 30%;
+        left: 25%;
+        right: 25%;
+        bottom: 50%;
+    }
+
+    .ModalText {
+        font-size: 12px;
+        margin: 10%;
+    }
 }
