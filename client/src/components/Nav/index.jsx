@@ -18,7 +18,7 @@ export default function Nav() {
           <Link to="https://buy.stripe.com/test_dR6dTsbRW9vO2QMdQQ">Donate to CommunityHub!</Link>
       </div>
 
-      <div>
+      <div className="navDiv">
         <nav className="nav">
           {Auth.loggedIn() && (
             <>
