@@ -21,7 +21,7 @@ export default function Profile() {
 
   return (
     <div id="profile-page">
-      <h1>Profile</h1>
+      <h1 class="title">Profile</h1>
 
       {loading && (
         <h2 className="loading-data">
