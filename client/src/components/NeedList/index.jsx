@@ -43,12 +43,8 @@ const NeedList = ({ needs, title, showTitle = true, showFirstName = true }) => {
             <h4>
               {showFirstName ? (
                 <>
-                  <Link
-                    to={`/profile/`}
-                  >
                     {need.needAuthor.firstName} {need.needAuthor.lastName}{" "}
                     <br />
-                  </Link>
                   <span style={{ fontSize: "1rem" }}>
                     Posted this community project on {need.createdAt}
                   </span>
