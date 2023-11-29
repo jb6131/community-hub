@@ -12,20 +12,25 @@
     }
 
     .display-user {
-        width: 90%;
+        width: 50%;
         max-width: 600px;
         margin: 2rem auto;
         list-style: none;
+        background-color: #7f8537c3;
+        border-radius: 50px;
+        outline: 2px solid black;
+        padding: .75%;
+        margin-bottom: 2rem;
 
         li {
             padding: 0;
             margin: 1rem 0;
-            color: #555;
+            color: #fff;
 
             .display-user__label {
                 font-weight: bold;
                 margin-right: 1rem;
-                color: #000;
+                color: #fff;
             }
         }
     }
