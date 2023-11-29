@@ -4,8 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import Login from "./pages/login.jsx";
-import Signup from "./pages/signup.jsx";
+import Login from "./pages/Login/login.jsx";
+import Signup from "./pages/Signup/signup.jsx";
 import SingleNeed from "./pages/singleNeed.jsx";
 import NotFound from "./pages/NotFound.jsx";
 

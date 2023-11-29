@@ -75,7 +75,7 @@ const NeedForm = ( {className} ) => {
                 name="needText"
                 placeholder="Here's a new community project..."
                 value={needText}
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                style={{ lineHeight: '4.5', width: '800px', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
               <br/>
@@ -85,7 +85,7 @@ const NeedForm = ( {className} ) => {
                 name="needDate"
                 placeholder="Enter the project date and time"
                 value={needDate}
-                style={{ lineHeight: '2.0', resize: 'vertical' }}
+                style={{ lineHeight: '4.0', margin: '10px', resize: 'vertical' }}
                 onChange={handleChange}
               ></input>
             </div>

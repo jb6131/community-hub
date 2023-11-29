@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
+import './index.css';
 import { useMutation } from '@apollo/client';
-import { SIGNUP_MUTATION } from '../utils/mutations';
+import { SIGNUP_MUTATION } from '../../utils/mutations';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const Signup = ( {className} ) => {
   const [formState, setFormState] = useState({
@@ -44,7 +44,7 @@ const Signup = ( {className} ) => {
   return (
     <main className={ className }>
       <div>
-        <div>
+        <div class="title">
           <h4>Sign Up</h4>
           <div>
             {data ? (
@@ -53,36 +53,36 @@ const Signup = ( {className} ) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
+              <form class="form" onSubmit={handleFormSubmit}>
+                <input class="input"
                   placeholder="Your first name"
                   name="firstName"
                   type="text"
                   value={formState.firstName}
                   onChange={handleChange}
                 />
-                <input
+                <input class="input"
                   placeholder="Your last name"
                   name="lastName"
                   type="text"
                   value={formState.lastName}
                   onChange={handleChange}
                 />
-                <input
+                <input class="input"
                   placeholder="Your email"
                   name="email"
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
-                <input
-                  placeholder="******"
+                <input class="input"
+                  placeholder="Password"
                   name="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
+                <button class="btn"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
