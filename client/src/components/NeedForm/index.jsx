@@ -65,7 +65,7 @@ const NeedForm = ( {className} ) => {
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
           >
-            Character Count: {characterCount}/280
+            {characterCount}/280
           </p>
           <form
             onSubmit={handleFormSubmit}
