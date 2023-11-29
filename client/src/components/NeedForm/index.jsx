@@ -103,10 +103,12 @@ const NeedForm = ( {className} ) => {
           </form>
         </>
       ) : (
-        <p>
-          You need to be logged in to share your community project. Please{' '}
-          <Link to="/login">login</Link>{' '} or {' '}<Link to="/signup">signup.</Link>
-        </p>
+        <div className='LISU'>
+          Join us to participate in community projects! 
+          <p>{' '}
+          <Link to="/login">Login</Link>{' '} | {' '}<Link to="/signup">Signup</Link>
+          </p>
+        </div>
       )}
     </div>
   );
@@ -147,4 +149,8 @@ textarea {
   max-width: 100%;
 }
 
+
+.LISU p {
+  font-size: 35px;
+}
 `
