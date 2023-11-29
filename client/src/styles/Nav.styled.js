@@ -8,14 +8,13 @@ padding: 2rem 10%;
 display: flex;
 box-shadow: 0 0 0px 1px rgba(150, 150, 150, 0.8);
 width: 100%;
+
 p {
     font-size: 3rem;
     color: white;
-    display: flex;
     }
 
 nav {
-    float: left;
     display: flex;
     margin-left: 33rem;
     max-width: 100%;
@@ -39,17 +38,42 @@ nav {
     color: yellow;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1440px) {
+    justify-content: space-between;
     nav {
-        margin-left: 10px;
-        flex-direction: column;
-        flex-wrap: wrap;
+        margin: 0;
+    }
+    .navDiv {
+        align-self: center;
     }
     .donate-link {
-        flex-wrap: wrap;
-        margin-left: 15%;
+        margin: 0;
+        align-self: center;
     }
 }
 
+@media screen and (max-width: 1280px) {
+    nav {
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+    
+    .donate-link {
+        flex-wrap: wrap;
+        margin: 0;
+    }
+}
 
+@media screen and (max-width: 768px) {
+    flex-flow: column wrap;
+    justify-content: center;
+    nav {
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    .donate-link {
+        align: center;
+    }
+}
 `
