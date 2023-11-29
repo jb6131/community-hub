@@ -45,8 +45,9 @@ const SignUpForNeedList = ({ needId, signedUpUsers = [] }) => {
                 </span>
                 {/* <p>{user._id}</p> */}
                 {/* <p>{data.user._id}</p> */}
+                {' '}
                 {user._id == data.user._id ? (
-                  <button onClick={handleWithdraw}>Withdraw</button>
+                  <button class="btn" onClick={handleWithdraw}>Withdraw</button>
                 ) : null}
               </h5>
             </div>

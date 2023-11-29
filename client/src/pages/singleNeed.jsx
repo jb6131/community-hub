@@ -56,7 +56,7 @@ const SingleNeed = ( {className}) => {
       </div>
 
       <div>
-        <button onClick={handleSignUp}>Sign Up</button>
+        <button className="btn" onClick={handleSignUp}>Sign Up</button>
       </div>
 
       <div>
@@ -80,5 +80,10 @@ color:white;
 padding: .75%;
 margin-top: 4rem;
 
+.btn {
+  font-size: 1.5rem;
+  padding: 1.5%;
+  border-radius: 10%;
+}
 
 `

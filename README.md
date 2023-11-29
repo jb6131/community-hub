@@ -12,5 +12,9 @@ The CommunityHub app is a MERN-stack single-page application with a scalable Mon
 
 ## Screenshot
 
+![Screenshot](./client/src/images/Screenshot.png)
+
 ## Deployed Link
+
+[Here is a link to the deployed application!](https://whispering-brook-60496-af6838df675c.herokuapp.com/)
 
