@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-
+import styled from "styled-components";
 import SignUpForNeedList from "../components/SignUpList";
 
 import { QUERY_SINGLE_NEED } from "../utils/queries";
 import { SIGN_UP_FOR_NEED } from "../utils/mutations";
 
-const SingleNeed = () => {
+const SingleNeed = ( {className}) => {
   const { needId } = useParams();
   const [signUpForNeed] = useMutation(SIGN_UP_FOR_NEED);
 
@@ -36,7 +36,7 @@ const SingleNeed = () => {
   }
 
   return (
-    <div>
+    <div className= { className }>
       <h3>
         {need.needAuthor?.firstName} {need?.needAuthor?.lastName} <br />
         <span style={{ fontSize: "1rem" }}>
@@ -48,7 +48,6 @@ const SingleNeed = () => {
           style={{
             fontSize: "1.5rem",
             fontStyle: "italic",
-            border: "2px dotted #1a1a1a",
             lineHeight: "1.5",
           }}
         >
@@ -70,4 +69,16 @@ const SingleNeed = () => {
   );
 };
 
-export default SingleNeed;
+export default styled (SingleNeed) `
+
+margin: auto;
+width: 50%;
+background-color: #7f8537c3;
+border-radius: 50px;
+outline: 2px solid black;
+color:white;
+padding: .75%;
+margin-top: 4rem;
+
+
+`
