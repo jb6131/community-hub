@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import styled from 'styled-components';
 
 import { SIGN_UP_FOR_NEED } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const SignUpForNeedForm = ({ needId }) => {
+const SignUpForNeedForm = ({ needId, className }) => {
   const [characterCount, setCharacterCount] = useState(0);
 
   const [signUpForNeed, { error }] = useMutation(SIGN_UP_FOR_NEED);
@@ -25,7 +26,7 @@ const SignUpForNeedForm = ({ needId }) => {
   };
 
   return (
-    <div>
+    <div className={ className }>
       <h4>Sign up to volunteer for this project!</h4>
 
       {Auth.loggedIn() ? (
@@ -61,13 +62,19 @@ const SignUpForNeedForm = ({ needId }) => {
           </form>
         </>
       ) : (
-        <p>
-          You need to be logged in to sign up. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
+        <div className='LISU'>
+          Join us to participate in community projects! 
+          <p>{' '}
+          <Link to="/login">Login</Link>{' '} | {' '}<Link to="/signup">Signup</Link>
+          </p>
+        </div>
       )}
     </div>
   );
 };
 
-export default SignUpForNeedForm;
+export default styled (SignUpForNeedForm)`
+.LISU p {
+  font-size: 35px;
+}
+`;
