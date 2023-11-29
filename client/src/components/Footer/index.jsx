@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div className='foot'>
         {location.pathname !== '/' && (
-          <button
+          <button class="btn"
             onClick={() => navigate(-1)}
           >
             &larr; Go Back

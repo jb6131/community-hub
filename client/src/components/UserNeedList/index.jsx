@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-
+import './index.css';
 import { REMOVE_NEED } from "../../utils/mutations";
 
 const UserNeedList = ({ needs, refetchNeeds }) => {
@@ -26,7 +26,7 @@ const UserNeedList = ({ needs, refetchNeeds }) => {
       </div>
       {needs &&
         needs.map((need) => (
-          <div key={need._id}>
+          <div key={need._id} class="user-need">
             <h4>
               Need Title: {need.needText}
               <br />
@@ -36,7 +36,7 @@ const UserNeedList = ({ needs, refetchNeeds }) => {
                 Need Date: {need.needDate}
               </span>
               <p>Created on: {need.createdAt}</p>
-              <button onClick={() => handleRemove(need._id)}>Remove</button>
+              <button class="btn" onClick={() => handleRemove(need._id)}>Remove</button>
             </div>
           </div>
         ))}
