@@ -4,7 +4,7 @@ const dateFormat = require('../utils/dateFormat');
 const needSchema = new Schema({
   needText: {
     type: String,
-    required: 'Please post a need!',
+    required: 'Please write some information about your project!',
     minlength: 1,
     maxlength: 280,
     trim: true,
