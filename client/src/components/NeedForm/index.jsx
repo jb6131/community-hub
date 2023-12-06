@@ -73,7 +73,7 @@ const NeedForm = ( {className} ) => {
             <div>
               <textarea className="text"
                 name="needText"
-                placeholder="Here's a new community project..."
+                placeholder="Enter information about your project"
                 value={needText}
                 // style={{ lineHeight: '4.5', width: '800px', resize: 'vertical' }}
                 onChange={handleChange}
@@ -83,9 +83,9 @@ const NeedForm = ( {className} ) => {
               <input
                 type="datetime-local"
                 name="needDate"
+                className="date-picker"
                 placeholder="Enter the project date and time"
                 value={needDate}
-                style={{ lineHeight: '4.0', margin: '10px', resize: 'vertical' }}
                 onChange={handleChange}
               ></input>
             </div>
@@ -147,8 +147,17 @@ textarea {
   justify-content: center;
   width: 800px;
   max-width: 100%;
+  font-size: 20px;
+  resize: none;
 }
 
+.date-picker {
+  line-height: 2.0;
+  margin: 10px;
+  width: 300px;
+  max-width: 100%;
+  font-size: 20px;
+}
 
 .LISU p {
   font-size: 35px;

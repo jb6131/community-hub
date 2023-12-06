@@ -1,20 +1,46 @@
 # CommunityHub
 
-Welcome to CommunityHub, a simple application where community organizers can post neigborhood projects needing volunteer support. 
+## Description
 
-## Application Use
+CommunityHub is a web application where community organizers can post neighborhood projects needing volunteer support.
 
-When organizers open the application, they can sign up or log in to post community projects to a board. When community residents visit the application, they can see a list of upcoming projeects posted by organizers. If a resident would like to volunteer to work on a project, they can sign up or log in, visit the project page, and add themselves to the project. They can also remove themselves from projects they previously joined.
+## Table of Contents
 
-## Technology
+* [Usage](#usage)
 
-The CommunityHub app is a MERN-stack single-page application with a scalable MongoDB back end, a GraphQL Api, and Express.js and Node.js server with a react front end. We implement user authentication with JWT to build a user-focused platform.
+* [License](#license)
 
-## Screenshot
+* [Contributors](#contributors)
 
-![Screenshot](./client/src/images/Screenshot.png)
+* [Credits](#credits)
 
-## Deployed Link
+* [Questions](#questions)
 
-[Here is a link to the deployed application!](https://whispering-brook-60496-af6838df675c.herokuapp.com/)
+## Usage
 
+Follow [this](https://whispering-brook-60496-af6838df675c.herokuapp.com/) link to open the application.
+
+On opening the application, you will see the following page:
+
+![A screenshot of the homepage](./client/src/images/screenshot.png)
+
+From here, the user can login or signup. They are also able to view the list of posted community needs, but will be unable to participate until they have logged in or signed up. Once the user has created their account, they will then be able to create their own need and post it onto the community board. They will also be able to sign up to participate in a community project by clicking on the 'Participate in this community project' link. The user will also have access to their Profile page, where they can see a list of their own posted needs and remove them if so desired.
+
+## License
+
+N/A
+
+## Contributors
+
+[![](https://github.com/adrummer1.png?size=50)](https://github.com/adrummer1)
+[![](https://github.com/jb6131.png?size=50)](https://github.com/jb6131)
+[![](https://github.com/kmstephens437.png?size=50)](https://github.com/kmstephens437)
+[![](https://github.com/bryanreyes8991.png?size=50)](https://github.com/bryanreyes8991)
+
+## Credits
+
+N/A
+
+## Questions
+
+If you have any questions about the repo, open an issue or contact me directly. You can find more of my work at [jb6131](https://github.com/jb6131/).
