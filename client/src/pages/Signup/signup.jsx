@@ -44,7 +44,7 @@ const Signup = ( {className} ) => {
   return (
     <main className={ className }>
       <div>
-        <div class="title">
+        <div className="title">
           <h4>Sign Up</h4>
           <div>
             {data ? (
@@ -53,36 +53,36 @@ const Signup = ( {className} ) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form class="form" onSubmit={handleFormSubmit}>
-                <input class="input"
+              <form className="form" onSubmit={handleFormSubmit}>
+                <input className="input"
                   placeholder="Your first name"
                   name="firstName"
                   type="text"
                   value={formState.firstName}
                   onChange={handleChange}
                 />
-                <input class="input"
+                <input className="input"
                   placeholder="Your last name"
                   name="lastName"
                   type="text"
                   value={formState.lastName}
                   onChange={handleChange}
                 />
-                <input class="input"
+                <input className="input"
                   placeholder="Your email"
                   name="email"
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
-                <input class="input"
+                <input className="input"
                   placeholder="Password"
                   name="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button class="btn"
+                <button className="btn"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >

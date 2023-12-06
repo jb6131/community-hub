@@ -15,7 +15,7 @@ export default function Nav() {
           <p className="title">CommunityHub</p>
       </div> 
       <div className="donate-link">
-          <Link to="https://buy.stripe.com/test_dR6dTsbRW9vO2QMdQQ">Donate to CommunityHub!</Link>
+        <a href="https://buy.stripe.com/test_dR6dTsbRW9vO2QMdQQ" target="_blank" rel="noopener noreferrer">Donate to CommunityHub!</a>
       </div>
 
       <div className="navDiv">

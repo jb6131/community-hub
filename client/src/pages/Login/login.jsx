@@ -45,7 +45,7 @@ const Login = ({ className }) => {
   return (
     <main className={ className }>
       <div>
-        <div class="title">
+        <div className="title">
           <h4>Login</h4>
           <div>
             {data ? (
@@ -54,22 +54,22 @@ const Login = ({ className }) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form class="form" onSubmit={handleFormSubmit}>
-                <input class="input"
+              <form className="form" onSubmit={handleFormSubmit}>
+                <input className="input"
                   placeholder="Your email"
                   name="email"
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
-                <input class="input"
+                <input className="input"
                   placeholder="Password"
                   name="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button class="btn"
+                <button className="btn"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
