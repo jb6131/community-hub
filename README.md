@@ -18,7 +18,7 @@ CommunityHub is a web application where community organizers can post neighborho
 
 ## Usage
 
-Follow [this](https://whispering-brook-60496-af6838df675c.herokuapp.com/) link to open the application.
+Follow [this](https://immense-reef-17910-d38955511dce.herokuapp.com/) link to open the application.
 
 On opening the application, you will see the following page:
 
